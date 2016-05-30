@@ -1,8 +1,8 @@
 # Programmeerproject
-
+<br>
 ##PROPOSAL MY PERSONAL COOKBOOK
-
-**Naam: Schuiten
+<br>
+**Naam: Schuiten<br>
 Studentnummer: 10191089**
 
 *In de app My Personal Cookbook kan je recepten aanmaken en bewaren zodat je nooit meer je favoriete recepten kwijt kan raken*
