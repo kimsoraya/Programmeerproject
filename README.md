@@ -1,8 +1,5 @@
 # Programmeerproject
 <br>
-<p align="center">
- 
-
 
 ##PROPOSAL MY PERSONAL COOKBOOK
 <br>
@@ -10,7 +7,6 @@
 Studentnummer: 10191089**
 
 *In de app My Personal Cookbook kan je recepten aanmaken en bewaren zodat je nooit meer je favoriete recepten kwijt kan raken. Als je een recept wil toevoegen kan je dit intypen, of een foto maken van een recept uit je favoriete kookboek. Daarnaast kan je aan elk recept een foto toevoegen van het resultaat.*
-</p>
 
 Stel je wilt dat heerlijke recept bewaren dat alleen je moeder kan maken. Of dat familierecept dat van generatie op generatie wordt doorgegeven. Dat wil je goed bewaren. Je zou het natuurlijk kunnen opschrijven op papier en bewaren in een mapje. Maar papier verouderd, vlekken maken je tekst onleesbaar en in het ergste geval houd je het recept te dicht bij het vuur en zie je je familierecept letterlijk in vlammen opgaan. 
 
