@@ -5,11 +5,11 @@
 <br>
 **Naam: Schuiten<br>
 Studentnummer: 10191089**
-<br>
-<br>
-<br>
-*In de app My Personal Cookbook kan je recepten aanmaken en bewaren zodat je nooit meer je favoriete recepten kwijt kan raken. Als je een recept wil toevoegen kan je dit intypen, of een foto maken van een recept uit je favoriete kookboek. Daarnaast kan je aan elk recept een foto toevoegen van het resultaat.*
 
+*In de app My Personal Cookbook kan je recepten aanmaken en bewaren zodat je nooit meer je favoriete recepten kwijt kan raken. Als je een recept wil toevoegen kan je dit intypen, of een foto maken van een recept uit je favoriete kookboek. Daarnaast kan je aan elk recept een foto toevoegen van het resultaat.*
+<br>
+<br>
+<br>
 Stel je wilt dat heerlijke recept bewaren dat alleen je moeder kan maken. Of dat familierecept dat van generatie op generatie wordt doorgegeven. Dat wil je goed bewaren. Je zou het natuurlijk kunnen opschrijven op papier en bewaren in een mapje. Maar papier verouderd, vlekken maken je tekst onleesbaar en in het ergste geval houd je het recept te dicht bij het vuur en zie je je familierecept letterlijk in vlammen opgaan. 
 
 Daarom wil ik een app gaan maken waarin je deze, en al je andere recepten, kan opslaan. Je kan recepten met de hand toevoegen aan je bibliotheek. Dit kan door het recept zelf uit te typen, of door een foto te maken van bijvoorbeeld een recept uit een kookboek dat je heel vaak gebruikt. Van recepten online kan je een screenshot maken, en op deze manier ook als afbeelding aan je recept toevoegen. De recepten kan je vervolgens categoriseren in zelf aangemaakte categorieën zoals; voorgerecht, vlees, vis en desserts.  Bij elk recept kan je ook een foto toevoegen die dan bovenaan je recept komt te staan, bijvoorbeeld van het afgemaakte gerecht. Natuurlijk wil je ook dat je recepten terug te krijgen zijn in het geval je je telefoon kwijt raakt of als deze kapot gaat. Daarom wordt je recepten bibliotheek ook in een online database opgeslagen. Al deze functies zijn de criteria voor het minimum viable product. Als de tijd het toelaat kunnen er ook nog een aantal uitgebreidere functies worden toegevoegd. Zoals een favoriet functie, waarmee je favoriete recepten  in elke categorie bovenaan worden geplaatst. Of een keuze om je recepten in een lijst te laten zien, of in blokken met plaatjes erbij. Daarnaast zou er ook een simpelere functie kunnen worden ontwikkeld om online recepten op te slaan. Ook lijkt het me handig om het recept in stappen op te kunnen delen, dit is dus ook iets wat later kan worden geïmplementeerd.
