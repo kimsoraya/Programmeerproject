@@ -9,4 +9,9 @@
     <string name="title_activity_photo_recipe">PhotoRecipeActivity</string>
     <string name="saveButton">Save Recipe</string>
     <string name="homeButton">Home</string>
+    
+    <string-array name="recipe_titles">
+        <item>Paella</item>
+        <item>Pasta Pesto</item>
+    </string-array>
 </resources>

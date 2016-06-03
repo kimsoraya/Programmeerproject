@@ -19,11 +19,10 @@ public class CategoryActivity extends AppCompatActivity {
     TextView viewTitlesTextView;
     ListView viewTitlesListView;
 
-  /*  // Create objects for information in the listview and the custom adapter
+    // Create objects for information in the listview and the custom adapter
     int[] recipeImageResource = {R.drawable.paella, R.drawable.pastapesto};
     String[] recipeTitles;
     RecipeAdapter adapter;
-*/
 
 
     @Override
@@ -34,7 +33,8 @@ public class CategoryActivity extends AppCompatActivity {
         // Initialize
         viewTitlesTextView = (TextView) findViewById(R.id.recipeList);
         viewTitlesListView = (ListView) findViewById(R.id.recipeListView);
-       /* adapter = new RecipeAdapter(getApplicationContext(), R.layout.single_list_item);
+        adapter = new RecipeAdapter(getApplicationContext(), R.layout.single_list_item);
+        recipeTitles = getResources().getStringArray(R.array.recipe_titles);
 
 
         // Pass objects from the RecipeDataProvider into the ListView
@@ -46,7 +46,7 @@ public class CategoryActivity extends AppCompatActivity {
             // Add recipe objects using the add method
             adapter.add(newDataProvider);
             i++;
-        }*/
+        }
 
 
         try {

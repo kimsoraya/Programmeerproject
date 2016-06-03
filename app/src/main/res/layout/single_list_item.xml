@@ -16,7 +16,8 @@
         android:layout_toRightOf="@+id/recipeImage"
         android:id="@+id/recipeTitle"
         android:text="This is Recipe Title"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#000000"/>
 
     <View
         android:layout_width="match_parent"

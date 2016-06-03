@@ -87,6 +87,6 @@ public class RecipeAdapter extends ArrayAdapter {
         handler.title.setText(dataProvider.getRecipeTitles());
 
         // Return the row
-        return super.getView(position, convertView, parent);
+        return row;
     }
 }
