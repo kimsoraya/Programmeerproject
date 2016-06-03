@@ -16,9 +16,14 @@ import java.io.InputStreamReader;
 
 public class CategoryActivity extends AppCompatActivity {
 
-    Button viewTitlesButton;
     TextView viewTitlesTextView;
     ListView viewTitlesListView;
+
+  /*  // Create objects for information in the listview and the custom adapter
+    int[] recipeImageResource = {R.drawable.paella, R.drawable.pastapesto};
+    String[] recipeTitles;
+    RecipeAdapter adapter;
+*/
 
 
     @Override
@@ -26,16 +31,24 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        viewTitlesButton = (Button) findViewById(R.id.viewTitles);
+        // Initialize
         viewTitlesTextView = (TextView) findViewById(R.id.recipeList);
         viewTitlesListView = (ListView) findViewById(R.id.recipeListView);
+       /* adapter = new RecipeAdapter(getApplicationContext(), R.layout.single_list_item);
 
-    }
 
-    /*
-    When button is clicked, show the different recipes
-     */
-    public void viewTitlesClick(View view) {
+        // Pass objects from the RecipeDataProvider into the ListView
+        viewTitlesListView.setAdapter(adapter);
+        int i = 0;
+        for (String titles: recipeTitles){
+            RecipeDataProvider newDataProvider = new RecipeDataProvider(recipeImageResource[i],
+                    titles);
+            // Add recipe objects using the add method
+            adapter.add(newDataProvider);
+            i++;
+        }*/
+
+
         try {
             String titles;
             FileInputStream fileInputStream = openFileInput("saved_titles");
@@ -56,6 +69,7 @@ public class CategoryActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
     }
 
