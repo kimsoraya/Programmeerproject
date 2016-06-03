@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
         viewMenu = (Button) findViewById(R.id.menuButton);
         addRecipe = (Button) findViewById(R.id.addButton);
 
+        Intent mainIntent = getIntent();
+
+
     }
     /*
     onClickListener to show the menu options

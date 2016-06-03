@@ -80,6 +80,9 @@ public class PhotoRecipeActivity extends AppCompatActivity {
 
     }
 
+    public void HomeButtonClick(View view) {
+    }
+
 
     /*
     Load picture that was taken in the Take Photo class.

@@ -40,4 +40,13 @@
         android:text="@string/saveButton"
         android:id="@+id/saveButton"
         android:onClick="saveRecipeButtonClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/homeButton"
+        android:id="@+id/HomeButton"
+        android:onClick="HomeButtonClick"/>
 </RelativeLayout>

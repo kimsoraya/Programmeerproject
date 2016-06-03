@@ -1,5 +1,6 @@
 package com.example.kimschuiten.mypersonalcookbook30;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -56,5 +57,11 @@ public class CategoryActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void HomeButtonClick(View view) {
+        // Go back to main screen
+        Intent mainIntent = new Intent(this, MainActivity.class);
+        startActivity(mainIntent);
     }
 }
