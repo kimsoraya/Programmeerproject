@@ -60,7 +60,7 @@ public class PhotoRecipeActivity extends AppCompatActivity {
     private File getFile(){
         File folder = new File("sdcard/camera_app");
 
-        // Check if folder exists, make it
+        // Check if folder exists, if not, make it
         if(!folder.exists()){
             folder.mkdir();
         }

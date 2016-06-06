@@ -1,6 +1,8 @@
 package com.example.kimschuiten.mypersonalcookbook30;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +20,10 @@ public class TextRecipeActivity extends AppCompatActivity {
     EditText textCategoryEditText;
     EditText textTextEditText;
     Button saveRecipeButton;
+
+    Context context = this;
+    RecipeDatabaseHelper recipeDatabaseHelper;
+    SQLiteDatabase sqLiteDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,26 @@ public class TextRecipeActivity extends AppCompatActivity {
         // Get the information from the EditText
         String title = textTitleEditText.getText().toString();
         String category = textCategoryEditText.getText().toString();
+
+        // Initialize recipe db object + sqlitedatabase object
+        recipeDatabaseHelper = new RecipeDatabaseHelper(context);
+        sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
+
+        // Perform database insertion
+        recipeDatabaseHelper.addRecipeInfo(title, category, sqLiteDatabase);
+
+        // Close the database
+        Toast.makeText(getBaseContext(), "Recipe Saved!", Toast.LENGTH_SHORT).show();
+        recipeDatabaseHelper.close();
+
+  /*      // Send the information to the listview in CategoryActivity
+        CategoryActivity.this.recipeTitles.add(title);
+
+        // We notify the data model is changed
+        MainActivity.this.adapter.notifyDataSetChanged();
+
+
+        String category = textCategoryEditText.getText().toString();
         String text = textTextEditText.getText().toString();
 
         // Define filenames
@@ -60,7 +86,7 @@ public class TextRecipeActivity extends AppCompatActivity {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void HomeButtonClick(View view) {
