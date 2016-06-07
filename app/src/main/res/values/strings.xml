@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">My Personal Cookbook3.0</string>
+    <string name="viewCookbook">My Cookbook</string>
+    <string name="addRecipe">Add</string>
+    <string name="title_activity_text_photo">TextPhoto</string>
+    <string name="titleEditText">Recipe Title</string>
+    <string name="categorieEditText">Recipe Category</string>
+    <string name="takePhotoButton">Take Photo</string>
+    <string name="title_activity_photo_recipe">PhotoRecipeActivity</string>
+    <string name="saveButton">Save Recipe</string>
+    <string name="homeButton">Home</string>
+    
+    <string-array name="recipe_titles">
+        <item>Paella</item>
+        <item>Pasta Pesto</item>
+    </string-array>
+</resources>
