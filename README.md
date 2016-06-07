@@ -14,7 +14,20 @@ Studentnummer: 10191089**
 Stel je wilt dat heerlijke recept bewaren dat alleen je moeder kan maken. Of dat familierecept dat van generatie op generatie wordt doorgegeven. Dat wil je goed bewaren. Je zou het natuurlijk kunnen opschrijven op papier en bewaren in een mapje. Maar papier verouderd, vlekken maken je tekst onleesbaar en in het ergste geval houd je het recept te dicht bij het vuur en zie je je familierecept letterlijk in vlammen opgaan. 
 
 ###Features
-Daarom wil ik een app gaan maken waarin je deze, en al je andere recepten, kan opslaan. Je kan recepten met de hand toevoegen aan je bibliotheek. Dit kan door het recept zelf uit te typen, of door een foto te maken van bijvoorbeeld een recept uit een kookboek dat je heel vaak gebruikt. Van recepten online kan je een screenshot maken, en op deze manier ook als afbeelding aan je recept toevoegen. De recepten kan je vervolgens categoriseren in zelf aangemaakte categorieën zoals; voorgerecht, vlees, vis en desserts.  Bij elk recept kan je ook een foto toevoegen van je gerecht die dan bovenaan je recept komt te staan. Al deze functies zijn de criteria voor het minimum viable product (MVP). Als de tijd het toelaat kunnen er ook nog een aantal uitgebreidere functies worden toegevoegd. Zoals een favoriet functie, waarmee je favoriete recepten  in elke categorie bovenaan worden geplaatst. Een zoekfunctie zou ook heel handig zijn om door je recepten heen te zoeken, dit is vooral handig als je een groot aantal recepten hebt. Ook kan ik me voorstellen dat de gebruiker afbeeldingen wil toevoegen die al in zijn gallerij staan, of tekst wil toevoegen aan de "foto recepten". Daarnaast zou er ook een simpelere functie kunnen worden ontwikkeld om online recepten op te slaan. Ook lijkt het me handig om het recept in stappen op te kunnen delen, dit is dus ook iets wat later kan worden geïmplementeerd. Wat ik na het af hebben van mijn MVP ook heel graag zou willen implementeren is een online database, zodat je je recepten niet kwijt bent als je telefoon kwijt of stuk is.
+##MVP
+- Recepten opschrijven en opslaan
+- Een foto maken van een recept en als recept opslaan. Bijvoorbeeld een recept uit een kookboek dat je heel vaak gebruikt.
+- Screenshots maken van recepten online en deze als recept opslaan.
+- Recepten categoriseren in zelf aangemaakte categorieën zoals; voorgerecht, vlees, vis en desserts.
+- Bij elk recept kan je ook een foto toevoegen van je gerecht die dan bovenaan je recept komt te staan.
+##Optioneel
+- Favoriet functie: Hiermee worden je favorieten recepten in elke categorie bovenaan geplaatst.
+- Zoekfunctie
+- Afbeeldingen uit de gallerij toevoegen in plaats van zelf een foto nemen van je gerecht.
+- Tekst toevoegen aan de "foto recepten".
+- Een simpelere functie om online recepten op te slaan.
+- Recepten in stappen opdelen.
+- Online database
 
 ### Decomposing the problem
 De app heeft op zijn minst zes verschillende schermen. Op het openingsscherm staat alleen de titel van de app samen met het logo, een plus knop om een recept toe te voegen en een uitklapbaar menu. Als je op het menu klikt is er een dropdown menu met de verschillende categorieën van je kookboek, hier kan dan verder op worden geklikt om de recepten te bekijken. Je gaat bijvoorbeeld naar de categorie vis, en daar staat een lijst met verschillende vis recepten. Door op één van de recepten te klikken kom je in een nieuw scherm waar bovenaan de optionele foto staat die je van je gerecht hebt genomen. Deze foto is bijgesneden om goed in de app te passen. Als je op de foto klikt wordt hij in vol scherm getoond. Ook dit zou problemen kunnen opleveren, omdat ik dit nog nooit heb eerder heb geïmplementeerd in een app. Echter, er zijn veel apps die op deze manier foto’s laten zien en vergroten, en ik zou dus gebruik kunnen maken van deze bestaande kennis. Onder deze foto staan vervolgens nog een keer de titel en daaronder het recept. 
