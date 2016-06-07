@@ -14,13 +14,13 @@ Studentnummer: 10191089**
 Stel je wilt dat heerlijke recept bewaren dat alleen je moeder kan maken. Of dat familierecept dat van generatie op generatie wordt doorgegeven. Dat wil je goed bewaren. Je zou het natuurlijk kunnen opschrijven op papier en bewaren in een mapje. Maar papier verouderd, vlekken maken je tekst onleesbaar en in het ergste geval houd je het recept te dicht bij het vuur en zie je je familierecept letterlijk in vlammen opgaan. 
 
 ###Features
-##MVP
+####MVP
 - Recepten opschrijven en opslaan
 - Een foto maken van een recept en als recept opslaan. Bijvoorbeeld een recept uit een kookboek dat je heel vaak gebruikt.
 - Screenshots maken van recepten online en deze als recept opslaan.
 - Recepten categoriseren in zelf aangemaakte categorieën zoals; voorgerecht, vlees, vis en desserts.
 - Bij elk recept kan je ook een foto toevoegen van je gerecht die dan bovenaan je recept komt te staan.
-##Optioneel
+####Optioneel
 - Favoriet functie: Hiermee worden je favorieten recepten in elke categorie bovenaan geplaatst.
 - Zoekfunctie
 - Afbeeldingen uit de gallerij toevoegen in plaats van zelf een foto nemen van je gerecht.
