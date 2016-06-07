@@ -20,6 +20,7 @@ Stel je wilt dat heerlijke recept bewaren dat alleen je moeder kan maken. Of dat
 - Screenshots maken van recepten online en deze als recept opslaan.
 - Recepten categoriseren in zelf aangemaakte categorieën zoals; voorgerecht, vlees, vis en desserts.
 - Bij elk recept kan je ook een foto toevoegen van je gerecht die dan bovenaan je recept komt te staan.
+
 ####Optioneel
 - Favoriet functie: Hiermee worden je favorieten recepten in elke categorie bovenaan geplaatst.
 - Zoekfunctie
