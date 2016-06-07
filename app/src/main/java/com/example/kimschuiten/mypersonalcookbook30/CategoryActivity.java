@@ -1,6 +1,8 @@
 package com.example.kimschuiten.mypersonalcookbook30;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +26,11 @@ public class CategoryActivity extends AppCompatActivity {
     String[] recipeTitles;
     RecipeAdapter adapter;
 
+    // Database objects
+    SQLiteDatabase sqLiteDatabase;
+    RecipeDatabaseHelper recipeDatabaseHelper;
+    Cursor cursor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +43,35 @@ public class CategoryActivity extends AppCompatActivity {
         adapter = new RecipeAdapter(getApplicationContext(), R.layout.single_list_item);
         recipeTitles = getResources().getStringArray(R.array.recipe_titles);
 
+        // Set up the adapter
+        viewTitlesListView.setAdapter(RecipeAdapter);
 
+        // Initialize database
+        recipeDatabaseHelper = new RecipeDatabaseHelper(getApplicationContext());
+        sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
+
+        // Get the information from the database
+        cursor = recipeDatabaseHelper.getRecipeInfo(sqLiteDatabase);
+
+        // Analyze cursor object: Is there data available on the cursor object?
+        if (cursor.moveToFirst()){
+            do {
+                // Get information from the cursor object
+                int image;
+                String category;
+                category = cursor.getString(1);
+
+                // TODO: 06-06-16
+                image =
+
+                RecipeDataProvider recipeDataProvider = new RecipeDataProvider(image, category);
+
+                RecipeAdapter.add(recipeDataProvider)
+            }
+            while(cursor.moveToNext());
+        }
+
+/*
         // Pass objects from the RecipeDataProvider into the ListView
         viewTitlesListView.setAdapter(adapter);
         int i = 0;
@@ -68,7 +103,7 @@ public class CategoryActivity extends AppCompatActivity {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
     }

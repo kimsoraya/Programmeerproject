@@ -2,6 +2,7 @@ package com.example.kimschuiten.mypersonalcookbook30;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -45,6 +46,21 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         db.insert(RecipeContract.NewRecipeInfo.TABLE_NAME, null, contentValues);
         Log.e("DATABASE OPERATIONS", "One row is inserted");
 
+    }
+
+    /*
+    Read table data from the database
+     */
+    public Cursor getRecipeInfo(SQLiteDatabase db){
+        // Create object of Cursor
+        Cursor cursor;
+
+        // TODO: 06-06-16 ADD IMAGES TO SQLITE
+        // Create some projections: the needed column names
+        String[] projections = {RecipeContract.NewRecipeInfo.RECIPE_TITLE,
+                RecipeContract.NewRecipeInfo.RECIPE_CATEGORY};
+        cursor = db.query(RecipeContract.NewRecipeInfo.TABLE_NAME, projections, null, null, null, null, null);
+        return cursor;
     }
 
     @Override
