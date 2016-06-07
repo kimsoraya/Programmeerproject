@@ -38,7 +38,7 @@ public class RecipeAdapter extends ArrayAdapter {
 
     @Override
     public int getCount() {
-        return this.list.size();
+        return list.size();
     }
 
     /*
@@ -46,7 +46,7 @@ public class RecipeAdapter extends ArrayAdapter {
      */
     @Override
     public Object getItem(int position) {
-        return this.list.get(position);
+        return list.get(position);
     }
 
     /*
@@ -79,12 +79,11 @@ public class RecipeAdapter extends ArrayAdapter {
         }
 
         // Get each object available on the recipe data provider class
-        RecipeDataProvider dataProvider;
-        dataProvider = (RecipeDataProvider) this.getItem(position);
+        RecipeDataProvider recipeDataProvider = (RecipeDataProvider) this.getItem(position);
 
         // Set the data resources
-        handler.image.setImageResource(dataProvider.getRecipeImageResource());
-        handler.title.setText(dataProvider.getRecipeTitles());
+        handler.image.setImageResource(recipeDataProvider.getRecipeImageResource());
+        handler.title.setText(recipeDataProvider.getRecipeTitles());
 
         // Return the row
         return row;

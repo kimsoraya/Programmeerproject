@@ -6,10 +6,16 @@ package com.example.kimschuiten.mypersonalcookbook30;
  */
 public class RecipeContract {
 
-    public static abstract class NewRecipeInfo{
-        // Define needed constants
+    /*
+  Define needed constants
+   */
+    public static abstract class NewRecipeInfo {
+        // column names
         public static final String RECIPE_TITLE = "title";
         public static final String RECIPE_CATEGORY = "category";
+        public static final String RECIPE_PHOTO = "photo";
+
+        // Table name
         public static final String TABLE_NAME = "recipe_info";
     }
 }

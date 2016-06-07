@@ -44,7 +44,7 @@ public class CategoryActivity extends AppCompatActivity {
         recipeTitles = getResources().getStringArray(R.array.recipe_titles);
 
         // Set up the adapter
-        viewTitlesListView.setAdapter(RecipeAdapter);
+        viewTitlesListView.setAdapter(adapter);
 
         // Initialize database
         recipeDatabaseHelper = new RecipeDatabaseHelper(getApplicationContext());
@@ -57,16 +57,14 @@ public class CategoryActivity extends AppCompatActivity {
         if (cursor.moveToFirst()){
             do {
                 // Get information from the cursor object
-                int image;
-                String category;
-                category = cursor.getString(1);
+                String title;
+                title = cursor.getString(0);
+                byte[] photo;
+                photo = cursor.getBlob(2);
 
-                // TODO: 06-06-16
-                image =
+                RecipeDataProvider recipeDataProvider = new RecipeDataProvider(photo, title);
 
-                RecipeDataProvider recipeDataProvider = new RecipeDataProvider(image, category);
-
-                RecipeAdapter.add(recipeDataProvider)
+                adapter.add(recipeDataProvider);
             }
             while(cursor.moveToNext());
         }
