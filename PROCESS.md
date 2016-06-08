@@ -13,3 +13,19 @@ Ik heb ondertussen ook twee nieuwe versies gemaakt in android studio. De tweede 
 Vandaag moest ik beginnen aan het opslaan van de informatie die de user schrijft in de Write Recipe Activity, deze opgeslagen informatie moet vervolgens worden opgehaald in de View Recipe Activity. Waar ik op dit moment vooral moeite mee heb is hoe ik het uitklapbare menu ga implementeren. Als je op het kookboek menu klikt moeten de verschillende categorieen worden uitgeklapt. Het probleem is dat deze categorieen dynamisch worden aangemaakt door de user, ze voeren bij een nieuw recept een categorie in, en deze wordt dan automatisch aangemaakt als nieuwe categorie. Vervolgens moet elke aangemaakt categorie doorlinken naar een nieuwe activity waarin alle recepten die binnen die categorie vallen. Dit is mijn tweede probleem van vandaag. In dit scherm waar alle recepten staan moeten alleen alle titels staan, en op die titels moet geklikt kunnen worden. Pas als er op de titel wordt geklikt kan men de rest van het recept zien. Alleen de titels moeten dus uit de internal storage worden opgehaald, en als daar op wordt geklikt moet de rest van de informatie uit de internal storage worden opgehaald. 
 
 Voor mijn prototype houd ik het nog simpel, als je op 'My Cookbook' klikt komt je meteen in een scherm waar je de recepten titels op kan halen, dit moet nu nog aan de hand van een 'View Recipes' button. Later moet je de recepten titels automatisch zien als je naar één van de categorieën gaat. Nadat ik dit geïmplenteerd had kwam ik erachter dat mijn 'View Recipe' button maar één recepttitel laat zien. Om dit op te lossen moet ik een adapter class maken met xml file voor een single list item. In de xml bepaal ik dan hoe één item eruit ziet en in de adapter class bepaal ik de functionaliteit van de lijst items. Dit geheel wordt vervolgens aangeroepen in mijn Category Activity, door het geheel in een listview van de xml van deze activity te zetten. 
+
+# dag 6
+Tip gekregen om in plaats van text files te gebruiken om de titels en categorieen op te slaan, deze in de sqlite database op te slaan. 
+
+# dag 7
+In principe staat het skelet voor mijn sqlite database. Voordat ik hem kan testen moet ik nog uitvinden hoe ik foto's van de camera in de database krijg. Ik wil namelijk dat men een foto kan nemen van zijn gerecht. In het recepten overzicht zie je dan links in de listview die foto, en rechts daarvan de (klikbare) titel van het recept. 
+
+Wat staat er verder nog op mij to do:
+- Op dit moment kan er maar 1 foto worden opgeslagen, uitzoeken hoe ik een aparte map maak en daar meerdere recepten foto's in kan plaatsen. 
+- Het klikbaar maken van de titels in het receptenoverzicht uitzoeken en implementeren.
+- Hoe kan ik het beste de recepten van de "foto recepten" opslaan. Wellicht moet ik daar een aparte tabel voor aanmaken in mijn database.
+- Nieuwe categorieen automatisch toevoegen aan het dropdown menu in het hoofdscherm, en een suggestie geven wanneer de gebruiker het categorie veld invult. 
+- Implementeren dat de beschrijving van het recept wordt opgeslagen en kan worden opgehaald als er op een recept wordt geklikt. 
+- Zorgen dat als er op een recept wordt geklikt de user het recept in juiste weergave ziet. Dit betekend bovenaan een foto van het resulaat, daaronder een titel en daaronder de uitleg in tekst of foto-vorm. 
+
+
