@@ -52,7 +52,6 @@ public class CategoryActivity extends AppCompatActivity {
 
         // Get the information from the database
         cursor = recipeDatabaseHelper.getRecipeInfo(sqLiteDatabase);
-/*
 
         // Analyze cursor object: Is there data available on the cursor object?
         if (cursor.moveToFirst()){
@@ -71,12 +70,14 @@ public class CategoryActivity extends AppCompatActivity {
             }
             while(cursor.moveToNext());
         }
-*/
 
 /*
         // Pass objects from the RecipeDataProvider into the ListView
         viewTitlesListView.setAdapter(adapter);
         int i = 0;
+        // TODO: haal titels op uit Database
+        // TODO: haal path van foto's op uit Database en laat de foto's zien.
+
         for (String titles: recipeTitles){
             RecipeDataProvider newDataProvider = new RecipeDataProvider(recipeImageResource[i],
                     titles);

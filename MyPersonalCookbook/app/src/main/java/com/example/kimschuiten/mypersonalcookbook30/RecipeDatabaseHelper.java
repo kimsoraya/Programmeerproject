@@ -16,7 +16,8 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_QUERY =
             "CREATE TABLE " + RecipeContract.NewRecipeInfo.TABLE_NAME + "(" +
                     RecipeContract.NewRecipeInfo.RECIPE_TITLE + " TEXT," +
-                    RecipeContract.NewRecipeInfo.RECIPE_CATEGORY + " TEXT);";
+                    RecipeContract.NewRecipeInfo.RECIPE_CATEGORY + " TEXT," +
+                    RecipeContract.NewRecipeInfo.RECIPE_PHOTO + " TEXT);";
 
 
     // Constructor
@@ -35,12 +36,13 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
     /*
     Define a method for inserting the data
      */
-    public void addRecipeInfo(String title, String category, SQLiteDatabase db){
+    public void addRecipeInfo(String title, String category, String photo, SQLiteDatabase db){
         // Create object of contentValues to create map values
         ContentValues contentValues = new ContentValues();
         // Specify key and the data
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TITLE, title);
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_CATEGORY, category);
+        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_PHOTO, photo);
 
         // Put all this information in the database
         db.insert(RecipeContract.NewRecipeInfo.TABLE_NAME, null, contentValues);
@@ -55,10 +57,10 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         // Create object of Cursor
         Cursor cursor;
 
-        // TODO: 06-06-16 ADD IMAGES TO SQLITE
+        // TODO: ADD IMAGE PATH TO SQLITE
         // Create some projections: the needed column names
         String[] projections = {RecipeContract.NewRecipeInfo.RECIPE_TITLE,
-                RecipeContract.NewRecipeInfo.RECIPE_CATEGORY};
+                RecipeContract.NewRecipeInfo.RECIPE_CATEGORY, RecipeContract.NewRecipeInfo.RECIPE_PHOTO};
         cursor = db.query(RecipeContract.NewRecipeInfo.TABLE_NAME, projections, null, null, null, null, null);
         return cursor;
     }
