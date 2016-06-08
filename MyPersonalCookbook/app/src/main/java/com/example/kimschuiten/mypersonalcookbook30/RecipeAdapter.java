@@ -82,7 +82,9 @@ public class RecipeAdapter extends ArrayAdapter {
         RecipeDataProvider recipeDataProvider = (RecipeDataProvider) this.getItem(position);
 
         // Set the data resources
+/*
         handler.image.setImageResource(recipeDataProvider.getRecipeImageResource());
+*/
         handler.title.setText(recipeDataProvider.getRecipeTitles());
 
         // Return the row

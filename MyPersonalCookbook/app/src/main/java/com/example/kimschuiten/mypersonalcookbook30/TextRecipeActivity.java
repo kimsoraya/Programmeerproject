@@ -25,14 +25,15 @@ public class TextRecipeActivity extends AppCompatActivity {
     EditText textCategoryEditText;
     EditText textTextEditText;
     Button saveRecipeButton;
-    Button addPhotoButton;
     ImageView showPhotoImageView;
+
 
     Context context = this;
     RecipeDatabaseHelper recipeDatabaseHelper;
     SQLiteDatabase sqLiteDatabase;
 
     static final int CAM_REQUEST = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,17 +43,17 @@ public class TextRecipeActivity extends AppCompatActivity {
         textTitleEditText = (EditText) findViewById(R.id.titleEditText);
         textCategoryEditText = (EditText) findViewById(R.id.categoryEditText);
         textTextEditText = (EditText) findViewById(R.id.recipeText);
-        addPhotoButton = (Button) findViewById(R.id.addPictureButton);
         saveRecipeButton = (Button) findViewById(R.id.saveButton);
         showPhotoImageView = (ImageView) findViewById(R.id.recipePhotoImageView);
+
 
         Intent textIntent = getIntent();
 
     }
 
     /*
-    Add a photo of your dish
-     */
+   Add a photo of your dish
+    */
     public void onAddPictureClick(View view) {
         // Start camera intent
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -73,9 +74,10 @@ public class TextRecipeActivity extends AppCompatActivity {
 
     }
 
+
     /*
-    Create a folder where the photos will be stored.
-     */
+   Create a folder where the photos will be stored.
+    */
     private File getFile(){
         File folder = new File("sdcard/camera_app");
 
@@ -103,7 +105,7 @@ public class TextRecipeActivity extends AppCompatActivity {
         sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
 
         // Perform database insertion
-        recipeDatabaseHelper.addRecipeInfo(title, category, photo, sqLiteDatabase);
+        recipeDatabaseHelper.addRecipeInfo(title, category, sqLiteDatabase);
 
         // Close the database
         Toast.makeText(getBaseContext(), "Recipe Saved!", Toast.LENGTH_SHORT).show();
@@ -111,19 +113,14 @@ public class TextRecipeActivity extends AppCompatActivity {
 
   /*      // Send the information to the listview in CategoryActivity
         CategoryActivity.this.recipeTitles.add(title);
-
         // We notify the data model is changed
         MainActivity.this.adapter.notifyDataSetChanged();
-
-
         String category = textCategoryEditText.getText().toString();
         String text = textTextEditText.getText().toString();
-
         // Define filenames
         String fileName = "saved_titles";
         String fileName2 = "saved_categories";
         String fileName3 = "saved_texts";
-
         // Create an object of fileoutputstream
         try {
             FileOutputStream fileOutputStream = openFileOutput(fileName, MODE_PRIVATE);
@@ -145,6 +142,4 @@ public class TextRecipeActivity extends AppCompatActivity {
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
     }
-
-
 }

@@ -4,15 +4,16 @@ package com.example.kimschuiten.mypersonalcookbook30;
  * Created by kimschuiten on 03-06-16.
  */
 public class RecipeDataProvider {
-    private byte[] recipeImageResource;
+    private int recipeImageResource;
     private String recipeTitles;
     private String recipeCategories;
 
-    public byte[] getRecipeImageResource() {
+/*
+    public int getRecipeImageResource() {
         return recipeImageResource;
     }
 
-    public void setRecipeImageResource(byte[] recipeImageResource) {
+    public void setRecipeImageResource(int recipeImageResource) {
         this.recipeImageResource = recipeImageResource;
     }
 
@@ -33,21 +34,27 @@ public class RecipeDataProvider {
     }
 
     // Constructor
-    public RecipeDataProvider(byte[] recipeImageResource, String recipeTitles, String recipeCategories){
-      /*  this.setRecipeImageResource(recipeImageResource);
-        this.setRecipeTitles(recipeTitles);*/
+    public RecipeDataProvider(int recipeImageResource, String recipeTitles, String recipeCategories){
+      */
+/*  this.setRecipeImageResource(recipeImageResource);
+        this.setRecipeTitles(recipeTitles);*//*
+
         this.recipeTitles = recipeTitles;
         this.recipeImageResource = recipeImageResource;
         this.recipeCategories = recipeCategories;
     }
 
+*/
+
+
+    // Constructor
+    public RecipeDataProvider(int recipeImageResource, String recipeTitles, String recipeCategories){
+        this.setRecipeImageResource(recipeImageResource);
+        this.setRecipeTitles(recipeTitles);
+    }
 
 
 
-
-
-
-/*
     public String getRecipeTitles() {
         return recipeTitles;
     }
@@ -62,5 +69,5 @@ public class RecipeDataProvider {
 
     public void setRecipeImageResource(int recipeImageResource) {
         this.recipeImageResource = recipeImageResource;
-    }*/
+    }
 }

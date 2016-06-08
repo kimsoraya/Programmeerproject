@@ -33,7 +33,7 @@
     <EditText
         android:layout_width="350dp"
         android:layout_height="350dp"
-        android:layout_below="@+id/categoryEditText"
+        android:layout_below="@+id/recipePhotoImageView"
         android:hint="Write your recipe here"
         android:id="@+id/recipeText"
         android:gravity="top"/>

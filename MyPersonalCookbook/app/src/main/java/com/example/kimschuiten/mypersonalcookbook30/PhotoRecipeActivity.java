@@ -81,6 +81,9 @@ public class PhotoRecipeActivity extends AppCompatActivity {
     }
 
     public void HomeButtonClick(View view) {
+        // Go back to main screen
+        Intent mainIntent = new Intent(this, MainActivity.class);
+        startActivity(mainIntent);
     }
 
 

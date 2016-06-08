@@ -52,22 +52,26 @@ public class CategoryActivity extends AppCompatActivity {
 
         // Get the information from the database
         cursor = recipeDatabaseHelper.getRecipeInfo(sqLiteDatabase);
+/*
 
         // Analyze cursor object: Is there data available on the cursor object?
         if (cursor.moveToFirst()){
             do {
                 // Get information from the cursor object
-                String title;
-                title = cursor.getString(0);
-                byte[] photo;
-                photo = cursor.getBlob(2);
+                int image;
+                String category;
+                category = cursor.getString(1);
 
-                RecipeDataProvider recipeDataProvider = new RecipeDataProvider(photo, title);
+                // TODO: 06-06-16
+                image =
 
-                adapter.add(recipeDataProvider);
+                        RecipeDataProvider recipeDataProvider = new RecipeDataProvider(category);
+
+                RecipeAdapter.add(recipeDataProvider);
             }
             while(cursor.moveToNext());
         }
+*/
 
 /*
         // Pass objects from the RecipeDataProvider into the ListView
@@ -80,23 +84,18 @@ public class CategoryActivity extends AppCompatActivity {
             adapter.add(newDataProvider);
             i++;
         }
-
-
         try {
             String titles;
             FileInputStream fileInputStream = openFileInput("saved_titles");
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             StringBuffer stringBuffer = new StringBuffer();
-
             // Fetch the information using the buffered reader
             while ((titles = bufferedReader.readLine())!= null){
                 stringBuffer.append(titles + "\n");
             }
-
             // Show the titles in the TextView
             viewTitlesTextView.setText(stringBuffer.toString());
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
