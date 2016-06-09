@@ -20,12 +20,21 @@ Tip gekregen om in plaats van text files te gebruiken om de titels en categoriee
 # dag 7
 In principe staat het skelet voor mijn sqlite database. Voordat ik hem kan testen moet ik nog uitvinden hoe ik foto's van de camera in de database krijg. Ik wil namelijk dat men een foto kan nemen van zijn gerecht. In het recepten overzicht zie je dan links in de listview die foto, en rechts daarvan de (klikbare) titel van het recept. 
 
-Wat staat er verder nog op mij to do:
-- Op dit moment kan er maar 1 foto worden opgeslagen, uitzoeken hoe ik een aparte map maak en daar meerdere recepten foto's in kan plaatsen. 
+# dag 8
+Gisteren heb ik zo veel code verandert in een poging tot het toevoegen van de foto's aan mijn database, dat het een enorm zooitje is geworden en ik niet meer wist waar ik mee bezig was. Daarom vandaag terug gegaan naar de staat waarin alles nog wel werkte en "opnieuw" begonnen. 
+
+Foto path is inmiddels niet langer gehardcode, maar elke foto heeft een timestamp als naam. 
+Het lijkt erop dat het ook is gelukt om de foto path in de sqlite database te stoppen. 
+Begonnen aan het ophalen van de informatie (foto + titel) in de CategoryActivity.
+
+
+
+
+Wat staat er verder nog op mijn to do:
+- Ophalen van foto's uit sqlite met photo path en image view stoppen van category activity
 - Het klikbaar maken van de titels in het receptenoverzicht uitzoeken en implementeren.
 - Hoe kan ik het beste de recepten van de "foto recepten" opslaan. Wellicht moet ik daar een aparte tabel voor aanmaken in mijn database.
-- Nieuwe categorieen automatisch toevoegen aan het dropdown menu in het hoofdscherm, en een suggestie geven wanneer de gebruiker het categorie veld invult. 
 - Implementeren dat de beschrijving van het recept wordt opgeslagen en kan worden opgehaald als er op een recept wordt geklikt. 
 - Zorgen dat als er op een recept wordt geklikt de user het recept in juiste weergave ziet. Dit betekend bovenaan een foto van het resulaat, daaronder een titel en daaronder de uitleg in tekst of foto-vorm. 
-
+- - Nieuwe categorieen automatisch toevoegen aan het dropdown menu in het hoofdscherm, en een suggestie geven wanneer de gebruiker het categorie veld invult. 
 
