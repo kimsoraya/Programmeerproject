@@ -4,15 +4,17 @@ package com.example.kimschuiten.mypersonalcookbook30;
  * Created by kimschuiten on 03-06-16.
  */
 public class RecipeDataProvider {
-    private int recipeImageResource;
+    private String recipeImageResource;
     private String recipeTitles;
+/*
     private String recipeCategories;
+*/
 
-    public int getRecipeImageResource() {
+    public String getRecipeImageResource() {
         return recipeImageResource;
     }
 
-    public void setRecipeImageResource(int recipeImageResource) {
+    public void setRecipeImageResource(String recipeImageResource) {
         this.recipeImageResource = recipeImageResource;
     }
 
@@ -24,21 +26,23 @@ public class RecipeDataProvider {
         this.recipeTitles = recipeTitles;
     }
 
-    public String getRecipeCategories() {
+  /*  public String getRecipeCategories() {
         return recipeCategories;
     }
 
     public void setRecipeCategories(String recipeCategories) {
         this.recipeCategories = recipeCategories;
-    }
+    }*/
 
     // Constructor
-    public RecipeDataProvider(int recipeImageResource, String recipeTitles, String recipeCategories){
+    public RecipeDataProvider(String recipeImageResource, String recipeTitles/*String recipeCategories*/){
       /*  this.setRecipeImageResource(recipeImageResource);
         this.setRecipeTitles(recipeTitles);*/
         this.recipeTitles = recipeTitles;
         this.recipeImageResource = recipeImageResource;
+/*
         this.recipeCategories = recipeCategories;
+*/
     }
 
 

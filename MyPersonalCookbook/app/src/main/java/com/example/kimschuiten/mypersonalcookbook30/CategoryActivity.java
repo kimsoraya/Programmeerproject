@@ -57,16 +57,16 @@ public class CategoryActivity extends AppCompatActivity {
         if (cursor.moveToFirst()){
             do {
                 // Get information from the cursor object
-                int image;
-                String category;
-                category = cursor.getString(1);
+                String image;
+                String titles;
+                titles = cursor.getString(0);
+                image = cursor.getString(2);
 
-                // TODO: 06-06-16
-                image =
+                // Get the titles and image paths from the database
+                RecipeDataProvider recipeDataProvider = new RecipeDataProvider(image, titles);
+                adapter.add(recipeDataProvider);
 
-                        RecipeDataProvider recipeDataProvider = new RecipeDataProvider(category);
-
-                RecipeAdapter.add(recipeDataProvider);
+                // TODO: convert image path to actual image in imageview
             }
             while(cursor.moveToNext());
         }
@@ -75,8 +75,6 @@ public class CategoryActivity extends AppCompatActivity {
         // Pass objects from the RecipeDataProvider into the ListView
         viewTitlesListView.setAdapter(adapter);
         int i = 0;
-        // TODO: haal titels op uit Database
-        // TODO: haal path van foto's op uit Database en laat de foto's zien.
 
         for (String titles: recipeTitles){
             RecipeDataProvider newDataProvider = new RecipeDataProvider(recipeImageResource[i],
