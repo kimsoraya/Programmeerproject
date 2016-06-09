@@ -11,6 +11,9 @@ public class ShowRecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_recipe);
+
+        Intent viewCategoryIntent = getIntent();
+
     }
 
     public void HomeButtonClick(View view) {

@@ -1,20 +1,21 @@
 package com.example.kimschuiten.mypersonalcookbook30;
 
+import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.File;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -30,6 +31,7 @@ public class CategoryActivity extends AppCompatActivity {
     SQLiteDatabase sqLiteDatabase;
     RecipeDatabaseHelper recipeDatabaseHelper;
     Cursor cursor;
+    Context mContext;
 
 
     @Override
@@ -42,6 +44,8 @@ public class CategoryActivity extends AppCompatActivity {
         viewTitlesListView = (ListView) findViewById(R.id.recipeListView);
         adapter = new RecipeAdapter(getApplicationContext(), R.layout.single_list_item);
         recipeTitles = getResources().getStringArray(R.array.recipe_titles);
+
+        Intent viewCategoryIntent = getIntent();
 
         // Set up the adapter
         viewTitlesListView.setAdapter(adapter);
@@ -57,19 +61,34 @@ public class CategoryActivity extends AppCompatActivity {
         if (cursor.moveToFirst()){
             do {
                 // Get information from the cursor object
-                String image;
+                String imagePath;
                 String titles;
                 titles = cursor.getString(0);
-                image = cursor.getString(2);
+                imagePath = cursor.getString(2);
 
                 // Get the titles and image paths from the database
-                RecipeDataProvider recipeDataProvider = new RecipeDataProvider(image, titles);
+                RecipeDataProvider recipeDataProvider = new RecipeDataProvider(imagePath, titles);
                 adapter.add(recipeDataProvider);
 
-                // TODO: convert image path to actual image in imageview
+                // TODO: convert image path to actual thumbnail image in imageview
+                long selectedImageUri = ContentUris.parseId(Uri.fromFile(new File(imagePath)));
+                Bitmap bm = MediaStore.Images.Thumbnails.getThumbnail(
+                        mContext.getContentResolver(), selectedImageUri,MediaStore.Images.Thumbnails.MICRO_KIND,
+                        null );
+
             }
             while(cursor.moveToNext());
         }
+
+        // Set onclicklistener for the recipe titles.
+        viewTitlesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Go to ShowRecipeActivity
+                Intent showIntent = new Intent(view.getContext(), ShowRecipeActivity.class);
+                startActivity(showIntent);
+            }
+        });
 
 /*
         // Pass objects from the RecipeDataProvider into the ListView

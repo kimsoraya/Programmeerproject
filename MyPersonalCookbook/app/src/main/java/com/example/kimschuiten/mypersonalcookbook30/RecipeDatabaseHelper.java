@@ -28,6 +28,7 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        Log.e("DATABASE OPERATIONS", "TEST");
         // Create a table inside the database
         db.execSQL(CREATE_QUERY);
         Log.e("DATABASE OPERATIONS", "Table created");
@@ -59,7 +60,7 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
 
         // Create some projections: the needed column names.
         String[] projections = {RecipeContract.NewRecipeInfo.RECIPE_TITLE,
-                RecipeContract.NewRecipeInfo.RECIPE_CATEGORY, RecipeContract.NewRecipeInfo.RECIPE_PHOTO};
+                RecipeContract.NewRecipeInfo.RECIPE_PHOTO};
         cursor = db.query(RecipeContract.NewRecipeInfo.TABLE_NAME, projections, null, null, null, null, null);
         return cursor;
     }
