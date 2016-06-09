@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -58,26 +60,32 @@ public class CategoryActivity extends AppCompatActivity {
         cursor = recipeDatabaseHelper.getRecipeInfo(sqLiteDatabase);
 
         // Analyze cursor object: Is there data available on the cursor object?
-        if (cursor.moveToFirst()){
-            do {
-                // Get information from the cursor object
-                String imagePath;
-                String titles;
-                titles = cursor.getString(0);
-                imagePath = cursor.getString(2);
+        if (cursor!=null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    // Get information from the cursor object
+                    String imagePath;
+                    String titles;
+                    titles = cursor.getString(0);
+                    imagePath = cursor.getString(1);
 
-                // Get the titles and image paths from the database
-                RecipeDataProvider recipeDataProvider = new RecipeDataProvider(imagePath, titles);
-                adapter.add(recipeDataProvider);
+                    // Get the titles and image paths from the database
+                    RecipeDataProvider recipeDataProvider = new RecipeDataProvider(imagePath, titles);
+                    adapter.add(recipeDataProvider);
 
-                // TODO: convert image path to actual thumbnail image in imageview
-                long selectedImageUri = ContentUris.parseId(Uri.fromFile(new File(imagePath)));
-                Bitmap bm = MediaStore.Images.Thumbnails.getThumbnail(
-                        mContext.getContentResolver(), selectedImageUri,MediaStore.Images.Thumbnails.MICRO_KIND,
-                        null );
+                    // TODO: convert image path to actual thumbnail image in imageview
+                    Bitmap ThumbImage = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(imagePath), 100, 100);
 
+
+
+                    /*long selectedImageUri = ContentUris.parseId(Uri.fromFile(new File(imagePath)));
+                    Bitmap bm = MediaStore.Images.Thumbnails.getThumbnail(
+                            mContext.getContentResolver(), selectedImageUri, MediaStore.Images.Thumbnails.MICRO_KIND,
+                            null);
+*/
+                }
+                while (cursor.moveToNext());
             }
-            while(cursor.moveToNext());
         }
 
         // Set onclicklistener for the recipe titles.
