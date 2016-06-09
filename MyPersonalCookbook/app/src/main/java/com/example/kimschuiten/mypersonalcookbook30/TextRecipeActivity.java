@@ -129,13 +129,13 @@ public class TextRecipeActivity extends AppCompatActivity {
         // Get the information from the EditText
         String title = textTitleEditText.getText().toString();
         String category = textCategoryEditText.getText().toString();
+        // Get the path of the photo as a String
         String photo = String.valueOf(Uri.parse(mCurrentPhotoPath));
 
         // Initialize recipe db object + sqlitedatabase object
         recipeDatabaseHelper = new RecipeDatabaseHelper(context);
         sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
 
-        // TODO: Stop path van foto in database --> mCurrentPhotoPath
         // Perform database insertion
         recipeDatabaseHelper.addRecipeInfo(title, category, photo, sqLiteDatabase);
 

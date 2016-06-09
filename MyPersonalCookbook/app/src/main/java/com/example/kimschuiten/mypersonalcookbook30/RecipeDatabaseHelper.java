@@ -57,8 +57,7 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         // Create object of Cursor
         Cursor cursor;
 
-        // TODO: ADD IMAGE PATH TO SQLITE
-        // Create some projections: the needed column names
+        // Create some projections: the needed column names.
         String[] projections = {RecipeContract.NewRecipeInfo.RECIPE_TITLE,
                 RecipeContract.NewRecipeInfo.RECIPE_CATEGORY, RecipeContract.NewRecipeInfo.RECIPE_PHOTO};
         cursor = db.query(RecipeContract.NewRecipeInfo.TABLE_NAME, projections, null, null, null, null, null);

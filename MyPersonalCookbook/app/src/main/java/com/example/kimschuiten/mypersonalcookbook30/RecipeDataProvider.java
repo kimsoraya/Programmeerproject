@@ -8,7 +8,6 @@ public class RecipeDataProvider {
     private String recipeTitles;
     private String recipeCategories;
 
-/*
     public int getRecipeImageResource() {
         return recipeImageResource;
     }
@@ -35,26 +34,20 @@ public class RecipeDataProvider {
 
     // Constructor
     public RecipeDataProvider(int recipeImageResource, String recipeTitles, String recipeCategories){
-      */
-/*  this.setRecipeImageResource(recipeImageResource);
-        this.setRecipeTitles(recipeTitles);*//*
-
+      /*  this.setRecipeImageResource(recipeImageResource);
+        this.setRecipeTitles(recipeTitles);*/
         this.recipeTitles = recipeTitles;
         this.recipeImageResource = recipeImageResource;
         this.recipeCategories = recipeCategories;
     }
 
-*/
-
-
-    // Constructor
-    public RecipeDataProvider(int recipeImageResource, String recipeTitles, String recipeCategories){
-        this.setRecipeImageResource(recipeImageResource);
-        this.setRecipeTitles(recipeTitles);
-    }
 
 
 
+
+
+
+/*
     public String getRecipeTitles() {
         return recipeTitles;
     }
@@ -69,5 +62,5 @@ public class RecipeDataProvider {
 
     public void setRecipeImageResource(int recipeImageResource) {
         this.recipeImageResource = recipeImageResource;
-    }
+    }*/
 }
