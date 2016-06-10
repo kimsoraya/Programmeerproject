@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -69,13 +70,17 @@ public class CategoryActivity extends AppCompatActivity {
                     titles = cursor.getString(0);
                     imagePath = cursor.getString(1);
 
+
                     // Get the titles and image paths from the database
                     RecipeDataProvider recipeDataProvider = new RecipeDataProvider(imagePath, titles);
+
+                    // Add them to the listview
                     adapter.add(recipeDataProvider);
 
-                    // TODO: convert image path to actual thumbnail image in imageview
+                    // TODO: convert image path to actual thumbnail image in imageview ipv paella
                     Bitmap ThumbImage = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(imagePath), 100, 100);
-
+                    Log.e("LAAD FOTO PAD ZIEN", imagePath);
+                    Log.e("LAAD TITLE PAD ZIEN", titles);
 
 
                     /*long selectedImageUri = ContentUris.parseId(Uri.fromFile(new File(imagePath)));

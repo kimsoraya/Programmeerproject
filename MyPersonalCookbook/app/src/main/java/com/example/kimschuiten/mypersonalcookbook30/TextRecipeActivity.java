@@ -126,9 +126,10 @@ public class TextRecipeActivity extends AppCompatActivity {
     Save title, category en text to Recipe Object
      */
     public void saveRecipeButtonClick(View view){
-        // Get the information from the EditText
+        // Get the information from the EditTexts
         String title = textTitleEditText.getText().toString();
         String category = textCategoryEditText.getText().toString();
+        String text = textTextEditText.getText().toString();
         // Get the path of the photo as a String
         String photo = String.valueOf(Uri.parse(mCurrentPhotoPath));
 
@@ -137,7 +138,7 @@ public class TextRecipeActivity extends AppCompatActivity {
         sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
 
         // Perform database insertion
-        recipeDatabaseHelper.addRecipeInfo(title, category, photo, sqLiteDatabase);
+        recipeDatabaseHelper.addRecipeInfo(title, category, photo, text, sqLiteDatabase);
 
         // Close the database
         Toast.makeText(getBaseContext(), "Recipe Saved!", Toast.LENGTH_SHORT).show();

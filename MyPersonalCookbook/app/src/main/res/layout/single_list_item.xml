@@ -7,8 +7,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentLeft="true"
-        android:id="@+id/recipeImage"
-        android:src="@drawable/paella"/>
+        android:id="@+id/recipeImage"/>
 
     <TextView
         android:layout_width="300dp"
