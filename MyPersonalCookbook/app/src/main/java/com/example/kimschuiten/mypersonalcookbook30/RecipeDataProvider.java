@@ -1,20 +1,67 @@
 package com.example.kimschuiten.mypersonalcookbook30;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by kimschuiten on 03-06-16.
  */
 public class RecipeDataProvider {
-    private String recipeImageResource;
+    private Bitmap recipeImageResource;
     private String recipeTitles;
+
 /*
     private String recipeCategories;
 */
 
-    public String getRecipeImageResource() {
+    public RecipeDataProvider(){
+
+    }
+
+    String imageSrc;
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    private String uid;
+
+    public int getListItemPosition() {
+        return listItemPosition;
+    }
+
+    public void setListItemPosition(int listItemPosition) {
+        this.listItemPosition = listItemPosition;
+    }
+
+    int listItemPosition;
+
+    public boolean isHaveImage() {
+        return haveImage;
+    }
+
+    public void setHaveImage(boolean haveImage) {
+        this.haveImage = haveImage;
+    }
+
+    boolean haveImage;
+
+    public String getSubtext() {
+        return subtext;
+    }
+
+    public void setSubtext(String subtext) {
+        this.subtext = subtext;
+    }
+
+    String subtext;
+    boolean status;
+
+
+    public Bitmap getRecipeImageResource() {
         return recipeImageResource;
     }
 
-    public void setRecipeImageResource(String recipeImageResource) {
+    public void setRecipeImageResource(Bitmap recipeImageResource) {
         this.recipeImageResource = recipeImageResource;
     }
 
@@ -34,12 +81,24 @@ public class RecipeDataProvider {
         this.recipeCategories = recipeCategories;
     }*/
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+
     // Constructor
-    public RecipeDataProvider(String recipeImageResource, String recipeTitles/*String recipeCategories*/){
+    public RecipeDataProvider(Bitmap recipeImageResource, String recipeTitles/*String recipeCategories*/){
       /*  this.setRecipeImageResource(recipeImageResource);
         this.setRecipeTitles(recipeTitles);*/
         this.recipeTitles = recipeTitles;
         this.recipeImageResource = recipeImageResource;
+
+
+
 /*
         this.recipeCategories = recipeCategories;
 */

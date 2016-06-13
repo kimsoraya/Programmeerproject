@@ -18,7 +18,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.ArrayList;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -26,15 +28,17 @@ public class CategoryActivity extends AppCompatActivity {
     ListView viewTitlesListView;
 
     // Create objects for information in the listview and the custom adapter
+/*
     int[] recipeImageResource = {R.drawable.paella, R.drawable.pastapesto};
+*/
     String[] recipeTitles;
     RecipeAdapter adapter;
+    ArrayList<RecipeDataProvider> getSets;
 
     // Database objects
     SQLiteDatabase sqLiteDatabase;
     RecipeDatabaseHelper recipeDatabaseHelper;
     Cursor cursor;
-    Context mContext;
 
 
     @Override
@@ -70,12 +74,11 @@ public class CategoryActivity extends AppCompatActivity {
                     titles = cursor.getString(0);
                     imagePath = cursor.getString(1);
 
-
                     // Get the titles and image paths from the database
                     RecipeDataProvider recipeDataProvider = new RecipeDataProvider(imagePath, titles);
 
                     // Add them to the listview
-                    adapter.add(recipeDataProvider);
+                    getSets.add(imagePath, titles);
 
                     // TODO: convert image path to actual thumbnail image in imageview ipv paella
                     Bitmap ThumbImage = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(imagePath), 100, 100);
@@ -86,8 +89,8 @@ public class CategoryActivity extends AppCompatActivity {
                     /*long selectedImageUri = ContentUris.parseId(Uri.fromFile(new File(imagePath)));
                     Bitmap bm = MediaStore.Images.Thumbnails.getThumbnail(
                             mContext.getContentResolver(), selectedImageUri, MediaStore.Images.Thumbnails.MICRO_KIND,
-                            null);
-*/
+                            null);*/
+
                 }
                 while (cursor.moveToNext());
             }
@@ -136,9 +139,34 @@ public class CategoryActivity extends AppCompatActivity {
 
     }
 
+    public Uri getImageUri(Context inContext, Bitmap inImage, String imageName) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, imageName, null);
+        return Uri.parse(path);
+    }
+
+    public String getRealPathFromURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
+    }
+
+    public Bitmap convertSrcToBitmap(String imageSrc) {
+        Bitmap myBitmap = null;
+        File imgFile = new File(imageSrc);
+        if (imgFile.exists()) {
+            myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+        }
+        return myBitmap;
+    }
+
     public void HomeButtonClick(View view) {
         // Go back to main screen
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
+
+        // TODO: geef een index ofzo mee aan de intent? Zodat in de show recipe de juiste tekst wordt laten zien?
     }
 }
