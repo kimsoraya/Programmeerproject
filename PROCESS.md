@@ -27,12 +27,15 @@ Foto path is inmiddels niet langer gehardcode, maar elke foto heeft een timestam
 Het lijkt erop dat het ook is gelukt om de foto path in de sqlite database te stoppen. 
 Begonnen aan het ophalen van de informatie (foto + titel) in de CategoryActivity.
 
+# dag 9
+Ik heb vandaag geprobeerd mijn database volledig werkend te krijgen en in mijn category activity al de informatie uit de database op te halen. 
+Het is me gelukt om titels uit de database op te halen en in de listview te laten zien. Alleen zijn de bijbehorende foto's nu nog de gehardcode foto van paella die ik er ooit hebt ingezet. 
+Je kan ook al klikken op de recepttitels om het recept te bekijken, deze activity is verder alleen nog leeg.
 
 
 
 Wat staat er verder nog op mijn to do:
 - Ophalen van foto's uit sqlite met photo path en image view stoppen van category activity
-- Het klikbaar maken van de titels in het receptenoverzicht uitzoeken en implementeren.
 - Hoe kan ik het beste de recepten van de "foto recepten" opslaan. Wellicht moet ik daar een aparte tabel voor aanmaken in mijn database.
 - Implementeren dat de beschrijving van het recept wordt opgeslagen en kan worden opgehaald als er op een recept wordt geklikt. 
 - Zorgen dat als er op een recept wordt geklikt de user het recept in juiste weergave ziet. Dit betekend bovenaan een foto van het resulaat, daaronder een titel en daaronder de uitleg in tekst of foto-vorm. 
