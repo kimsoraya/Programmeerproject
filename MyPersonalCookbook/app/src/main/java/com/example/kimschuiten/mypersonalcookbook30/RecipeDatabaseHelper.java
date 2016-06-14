@@ -63,7 +63,16 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         // Create some projections: the needed column names.
         String[] projections = {RecipeContract.NewRecipeInfo.RECIPE_TITLE,
                 RecipeContract.NewRecipeInfo.RECIPE_PHOTO, RecipeContract.NewRecipeInfo.RECIPE_TEXT};
+
+/*
+        String selectQuery = "SELECT RECIPE_TEXT FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME +
+                " WHERE " + RecipeContract.NewRecipeInfo.RECIPE_TITLE;
+*/
+/*
+        mCursor = db.rawQuery(selectQuery, null );
+*/
         cursor = db.query(RecipeContract.NewRecipeInfo.TABLE_NAME, projections, null, null, null, null, null);
+
         return cursor;
     }
 
@@ -71,4 +80,5 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
 }

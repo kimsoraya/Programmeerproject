@@ -1,6 +1,5 @@
 package com.example.kimschuiten.mypersonalcookbook30;
 
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -33,7 +32,9 @@ public class CategoryActivity extends AppCompatActivity {
 */
     String[] recipeTitles;
     RecipeAdapter adapter;
-    ArrayList<RecipeDataProvider> getSets;
+/*
+    ArrayList<String> getSets;
+*/
 
     // Database objects
     SQLiteDatabase sqLiteDatabase;
@@ -74,16 +75,19 @@ public class CategoryActivity extends AppCompatActivity {
                     titles = cursor.getString(0);
                     imagePath = cursor.getString(1);
 
+                  /*  // Get the Bitmap
+                    Uri uri = Uri.parse("file://" + imagePath);
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }*/
+
                     // Get the titles and image paths from the database
-                    RecipeDataProvider recipeDataProvider = new RecipeDataProvider(imagePath, titles);
+                    RecipeDataProvider recipeDataProvider = new RecipeDataProvider(convertSrcToBitmap(imagePath), titles);
 
                     // Add them to the listview
-                    getSets.add(imagePath, titles);
-
-                    // TODO: convert image path to actual thumbnail image in imageview ipv paella
-                    Bitmap ThumbImage = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(imagePath), 100, 100);
-                    Log.e("LAAD FOTO PAD ZIEN", imagePath);
-                    Log.e("LAAD TITLE PAD ZIEN", titles);
+                    adapter.add(recipeDataProvider);
 
 
                     /*long selectedImageUri = ContentUris.parseId(Uri.fromFile(new File(imagePath)));
@@ -100,46 +104,24 @@ public class CategoryActivity extends AppCompatActivity {
         viewTitlesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Get the index of the title in the database
+                String index = ((TextView) findViewById(R.id.recipeTitle)).getText().toString();
+                String indexText = cursor.getString(2);
+
+
+                Bundle dataBundle = new Bundle();
+                dataBundle.putString("id", index);
+                dataBundle.putString("text", indexText);
+
                 // Go to ShowRecipeActivity
                 Intent showIntent = new Intent(view.getContext(), ShowRecipeActivity.class);
+                showIntent.putExtras(dataBundle);
                 startActivity(showIntent);
             }
         });
-
-/*
-        // Pass objects from the RecipeDataProvider into the ListView
-        viewTitlesListView.setAdapter(adapter);
-        int i = 0;
-
-        for (String titles: recipeTitles){
-            RecipeDataProvider newDataProvider = new RecipeDataProvider(recipeImageResource[i],
-                    titles);
-            // Add recipe objects using the add method
-            adapter.add(newDataProvider);
-            i++;
-        }
-        try {
-            String titles;
-            FileInputStream fileInputStream = openFileInput("saved_titles");
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            StringBuffer stringBuffer = new StringBuffer();
-            // Fetch the information using the buffered reader
-            while ((titles = bufferedReader.readLine())!= null){
-                stringBuffer.append(titles + "\n");
-            }
-            // Show the titles in the TextView
-            viewTitlesTextView.setText(stringBuffer.toString());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
-
     }
 
-    public Uri getImageUri(Context inContext, Bitmap inImage, String imageName) {
+    /*public Uri getImageUri(Context inContext, Bitmap inImage, String imageName) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, imageName, null);
@@ -151,7 +133,7 @@ public class CategoryActivity extends AppCompatActivity {
         cursor.moveToFirst();
         int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
         return cursor.getString(idx);
-    }
+    }*/
 
     public Bitmap convertSrcToBitmap(String imageSrc) {
         Bitmap myBitmap = null;
@@ -166,7 +148,5 @@ public class CategoryActivity extends AppCompatActivity {
         // Go back to main screen
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
-
-        // TODO: geef een index ofzo mee aan de intent? Zodat in de show recipe de juiste tekst wordt laten zien?
     }
 }

@@ -12,14 +12,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class ShowRecipeActivity extends AppCompatActivity {
     TextView recipeText;
+    TextView recipeTitleView;
+    String mRecipeTitle;
+    String mRecipeText;
 
 
     // Database objects
     SQLiteDatabase sqLiteDatabase;
     RecipeDatabaseHelper recipeDatabaseHelper;
-    Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,40 +31,40 @@ public class ShowRecipeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_recipe);
 
         recipeText = (TextView) findViewById(R.id.recipeTextView);
+        recipeTitleView = (TextView) findViewById(R.id.showRecipeTitle);
 
-        Intent viewCategoryIntent = getIntent();
+        // Initialize database
+        recipeDatabaseHelper = new RecipeDatabaseHelper(getApplicationContext());
+        sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
 
-        // Get the information from the database
-        cursor = recipeDatabaseHelper.getRecipeInfo(sqLiteDatabase);
+        // Haal de titel en tekst op uit vorige activity
+        Bundle extras = getIntent().getExtras();
+        mRecipeTitle = extras.getString("id");
+        mRecipeText = extras.getString("text");
+        Log.d("TEST INDEX", "OPGEHAALDE INDEX = " + mRecipeTitle);
+
+        recipeTitleView.setText(mRecipeTitle);
+        recipeText.setText(mRecipeText);
 
         // TODO haal de tekst op die bij de titel hoort
 
-
-
-        // Analyze cursor object: Is there data available on the cursor object?
-        if (cursor != null && cursor.getCount() > 0) {
-            if (cursor.moveToFirst()) {
-                do {
-                    // Get information from the cursor object
-                    String text;
-                    text = cursor.getString(2);
-
-
-                    // Get the titles and image paths from the database
 /*
-                    RecipeDataProvider recipeDataProvider = new RecipeDataProvider(text);
-*/
+        if (extras != null) {
+            String Value = extras.getString("id");
 
-                    // Add them to the listview
-/*
-                    recipeText.setText(recipeDataProvider);
-*/
-                }
-                while (cursor.moveToNext());
+
+            // Analyze cursor object: Is there data available on the cursor object?
+            Cursor cursor = recipeDatabaseHelper.getRecipeInfo(Value);
+            index = Value;
+            cursor.moveToFirst();
+
+            String text = cursor.getString(2);
+
             }
-
+*/
         }
-    }
+
+
 
     public void HomeButtonClick(View view) {
         // Go back to main screen

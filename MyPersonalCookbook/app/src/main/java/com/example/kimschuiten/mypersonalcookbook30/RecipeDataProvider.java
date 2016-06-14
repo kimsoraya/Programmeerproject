@@ -13,11 +13,11 @@ public class RecipeDataProvider {
     private String recipeCategories;
 */
 
-    public RecipeDataProvider(){
+/*    public RecipeDataProvider(){
 
-    }
+    }*/
 
-    String imageSrc;
+ /*   String imageSrc;
 
     public void setUid(String uid) {
         this.uid = uid;
@@ -54,7 +54,7 @@ public class RecipeDataProvider {
     }
 
     String subtext;
-    boolean status;
+    boolean status;*/
 
 
     public Bitmap getRecipeImageResource() {
@@ -81,14 +81,14 @@ public class RecipeDataProvider {
         this.recipeCategories = recipeCategories;
     }*/
 
-    public boolean isStatus() {
+    /*public boolean isStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
         this.status = status;
     }
-
+*/
 
     // Constructor
     public RecipeDataProvider(Bitmap recipeImageResource, String recipeTitles/*String recipeCategories*/){

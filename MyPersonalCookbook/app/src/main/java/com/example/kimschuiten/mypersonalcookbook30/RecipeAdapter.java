@@ -18,8 +18,8 @@ import java.util.List;
 /**
  * Created by kimschuiten on 03-06-16.
  */
-public class RecipeAdapter extends BaseAdapter {
-    List<RecipeDataProvider> _data;
+public class RecipeAdapter extends ArrayAdapter {
+/*    List<RecipeDataProvider> _data;
     Context _c;
 
     public RecipeAdapter(List<RecipeDataProvider> getData, Context context) {
@@ -28,6 +28,10 @@ public class RecipeAdapter extends BaseAdapter {
     }
 
     public RecipeAdapter(Context applicationContext, int single_list_item) {
+
+    }
+
+    public void add(RecipeDataProvider recipeDataProvider) {
 
     }
 
@@ -91,10 +95,11 @@ public class RecipeAdapter extends BaseAdapter {
         return view;
     }
 
+    */
     /**
      * @param position Get position of of object
      * @param imageSrc set image in imageView
-     */
+     *//*
     public void setImageInItem(int position, Bitmap imageSrc, String imagePath) {
         RecipeDataProvider dataSet = (RecipeDataProvider) _data.get(position);
         dataSet.setRecipeImageResource(imageSrc);
@@ -102,26 +107,28 @@ public class RecipeAdapter extends BaseAdapter {
         dataSet.setHaveImage(true);
         notifyDataSetChanged();
     }
-}
+}*/
 
 
-
-
-/*    List list = new ArrayList();
+    List list = new ArrayList();
 
     public RecipeAdapter(Context context, int resource) {
         super(context, resource);
     }
 
-    static class DataHandler{
+    static class DataHandler {
         ImageView image;
         TextView title;
     }
 
-    *//*
-   Save recipe objects in an array list
-     *//*
+
+    /*Save recipe
+    objects in
+    an array
+    list*/
+
     @Override
+
     public void add(Object object) {
         super.add(object);
         list.add(object);
@@ -132,18 +139,26 @@ public class RecipeAdapter extends BaseAdapter {
         return list.size();
     }
 
-    *//*
-    Method to return each item in the row
-     *//*
+
+   /* Method to
+    return
+    each item
+    in the
+    row*/
+
     @Override
+
     public Object getItem(int position) {
         return list.get(position);
     }
 
-    *//*
-    A method that will return each row of data
-     *//*
 
+    /*A method
+    that will
+    return
+    each row
+    of data
+    */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row;
@@ -151,7 +166,7 @@ public class RecipeAdapter extends BaseAdapter {
         DataHandler handler;
 
         // Check if row is existing or not
-        if (convertView == null){
+        if (convertView == null) {
             // Inflate the layout
             LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.single_list_item, parent, false);
@@ -165,7 +180,7 @@ public class RecipeAdapter extends BaseAdapter {
             row.setTag(handler);
         }
         // If row is already available, create row again
-        else{
+        else {
             handler = (DataHandler) row.getTag();
         }
 
@@ -174,10 +189,11 @@ public class RecipeAdapter extends BaseAdapter {
 
         // Set the data resources
         // TODO: set image resource from path (Uri?)
-        handler.image.setText(recipeDataProvider.getRecipeImageResource());
+        handler.image.setImageBitmap(recipeDataProvider.getRecipeImageResource());
         handler.title.setText(recipeDataProvider.getRecipeTitles());
 
         // Return the row
         return row;
-    }*/
+    }
 
+}
