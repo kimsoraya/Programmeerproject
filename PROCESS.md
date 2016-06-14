@@ -32,6 +32,11 @@ Ik heb vandaag geprobeerd mijn database volledig werkend te krijgen en in mijn c
 Het is me gelukt om titels uit de database op te halen en in de listview te laten zien. Alleen zijn de bijbehorende foto's nu nog de gehardcode foto van paella die ik er ooit hebt ingezet. 
 Je kan ook al klikken op de recepttitels om het recept te bekijken, deze activity is verder alleen nog leeg.
 
+#dag 10
+Recipe adapter en recipe data provider aangepast aan foto path content. Geprobeerd om de photopath om te zetten in Bitmap zodat ze te zien zijn in de recepten listview. Werkt nog niet. 
+
+#dag 11
+Als je op de titel klikt in de titel listview wordt er een nieuwe activity geopend waarin de titel nog een keer gedisplayed wordt. Hieronder zal dan de tekst van het recept komen. 
 
 
 Wat staat er verder nog op mijn to do:
