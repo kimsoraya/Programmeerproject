@@ -38,11 +38,15 @@ Recipe adapter en recipe data provider aangepast aan foto path content. Geprobee
 #dag 11
 Als je op de titel klikt in de titel listview wordt er een nieuwe activity geopend waarin de titel nog een keer gedisplayed wordt. Hieronder zal dan de tekst van het recept komen. 
 
+#dag 12
+Gisteren is het me gelukt om in de show recipe activity in ieder geval al de titel van het recept te laten zien. Ik kwam er vandaag alleen wel achter dat hij de verkeerde titel weergeeft. 
+Ondertussen heb ik wel een nieuwe method aangemaakt in mijn Databasehelper met een query voor het ophalen van de tekst die bij de titel hoort. De query lijkt te werken, maar omdat de verkeerde titel wordt opgehaald kan er niet een bijbehorende tekst worden gevonden. 
+
 
 Wat staat er verder nog op mijn to do:
+- Zorgen dat de juiste titels worden weergegeven en daarmee de juiste tekst kan worden opgehaald. 
 - Ophalen van foto's uit sqlite met photo path en image view stoppen van category activity
 - Hoe kan ik het beste de recepten van de "foto recepten" opslaan. Wellicht moet ik daar een aparte tabel voor aanmaken in mijn database.
-- Implementeren dat de beschrijving van het recept wordt opgeslagen en kan worden opgehaald als er op een recept wordt geklikt. 
-- Zorgen dat als er op een recept wordt geklikt de user het recept in juiste weergave ziet. Dit betekend bovenaan een foto van het resulaat, daaronder een titel en daaronder de uitleg in tekst of foto-vorm. 
-- - Nieuwe categorieen automatisch toevoegen aan het dropdown menu in het hoofdscherm, en een suggestie geven wanneer de gebruiker het categorie veld invult. 
+- Zorgen dat als er op een recept wordt geklikt de user het recept in juiste weergave ziet. Dit betekend bovenaan een titel en daaronder de uitleg in tekst of foto-vorm. 
+- Aanmaken categorieen. 
 
