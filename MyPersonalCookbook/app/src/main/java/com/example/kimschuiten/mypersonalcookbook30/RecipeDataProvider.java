@@ -9,6 +9,7 @@ public class RecipeDataProvider {
     private Bitmap recipeImageResource;
     private String recipeTitles;
 
+
 /*
     private String recipeCategories;
 */

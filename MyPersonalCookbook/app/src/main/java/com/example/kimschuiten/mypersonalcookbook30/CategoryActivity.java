@@ -20,6 +20,7 @@ import android.widget.TextView;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -31,6 +32,8 @@ public class CategoryActivity extends AppCompatActivity {
     int[] recipeImageResource = {R.drawable.paella, R.drawable.pastapesto};
 */
     String[] recipeTitles;
+    String text;
+    String title;
     RecipeAdapter adapter;
 /*
     ArrayList<String> getSets;
@@ -89,7 +92,6 @@ public class CategoryActivity extends AppCompatActivity {
                     // Add them to the listview
                     adapter.add(recipeDataProvider);
 
-
                     /*long selectedImageUri = ContentUris.parseId(Uri.fromFile(new File(imagePath)));
                     Bitmap bm = MediaStore.Images.Thumbnails.getThumbnail(
                             mContext.getContentResolver(), selectedImageUri, MediaStore.Images.Thumbnails.MICRO_KIND,
@@ -105,23 +107,31 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Get the index of the title in the database
+                // TODO get recipe text
                 String index = ((TextView) findViewById(R.id.recipeTitle)).getText().toString();
-                String indexText = cursor.getString(2);
-
+                String text = recipeDatabaseHelper.getRecipeText(index);
 
                 Bundle dataBundle = new Bundle();
                 dataBundle.putString("id", index);
-                dataBundle.putString("text", indexText);
+                dataBundle.putString("text", text);
 
                 // Go to ShowRecipeActivity
                 Intent showIntent = new Intent(view.getContext(), ShowRecipeActivity.class);
                 showIntent.putExtras(dataBundle);
                 startActivity(showIntent);
+
+/*
+                HashMap<String, String> hashmap = (HashMap)parent.getItemAtPosition(position);
+
+
+                Intent intent = new Intent (parent.getContext(), ShowRecipeActivity.class);
+                intent.putExtra("key", hashmap);
+                startActivityForResult(intent, 0);*/
             }
         });
     }
 
-    /*public Uri getImageUri(Context inContext, Bitmap inImage, String imageName) {
+    public Uri getImageUri(Context inContext, Bitmap inImage, String imageName) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, imageName, null);
@@ -133,7 +143,7 @@ public class CategoryActivity extends AppCompatActivity {
         cursor.moveToFirst();
         int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
         return cursor.getString(idx);
-    }*/
+    }
 
     public Bitmap convertSrcToBitmap(String imageSrc) {
         Bitmap myBitmap = null;

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 /**
@@ -15,7 +16,7 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String CREATE_QUERY =
             "CREATE TABLE " + RecipeContract.NewRecipeInfo.TABLE_NAME + "(" +
-                    RecipeContract.NewRecipeInfo.RECIPE_TEXT + " Text," +
+                    RecipeContract.NewRecipeInfo.RECIPE_TEXT + " TEXT," +
                     RecipeContract.NewRecipeInfo.RECIPE_TITLE + " TEXT," +
                     RecipeContract.NewRecipeInfo.RECIPE_CATEGORY + " TEXT," +
                     RecipeContract.NewRecipeInfo.RECIPE_PHOTO + " TEXT);";
@@ -56,6 +57,33 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
     /*
     Read table data from the database
      */
+/*    public RecipeDataProvider getRecipeID(String recipeTitle){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String selectQuery = "SELECT RECIPE_TEXT FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME +
+                " WHERE " + RecipeContract.NewRecipeInfo.RECIPE_TITLE + " = \"" + recipeTitle + "\"";
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        RecipeDataProvider recipeDataProvider = new RecipeDataProvider();
+
+        if(cursor != null){
+            if (cursor.moveToFirst()){
+                cursor.moveToFirst();
+                int recipeID = cursor.getInt(cursor.getColumnIndexOrThrow(RecipeContract.NewRecipeInfo.RECIPE_TITLE));
+                recipeDataProvider.setRecipeTitles(cursor.getString(1));
+                cursor.close();
+            } else {
+                recipeDataProvider = null;
+            }
+            db.close();
+            return recipeDataProvider;
+        }
+
+        return recipeDataProvider;
+    }*/
+
+
     public Cursor getRecipeInfo(SQLiteDatabase db){
         // Create object of Cursor
         Cursor cursor;
@@ -64,16 +92,19 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         String[] projections = {RecipeContract.NewRecipeInfo.RECIPE_TITLE,
                 RecipeContract.NewRecipeInfo.RECIPE_PHOTO, RecipeContract.NewRecipeInfo.RECIPE_TEXT};
 
-/*
-        String selectQuery = "SELECT RECIPE_TEXT FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME +
-                " WHERE " + RecipeContract.NewRecipeInfo.RECIPE_TITLE;
-*/
-/*
-        mCursor = db.rawQuery(selectQuery, null );
-*/
         cursor = db.query(RecipeContract.NewRecipeInfo.TABLE_NAME, projections, null, null, null, null, null);
 
         return cursor;
+    }
+
+    public String getRecipeText(String recipeTitle){
+
+        String selectQuery = "SELECT RECIPE_TEXT FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME +
+                " WHERE " + RecipeContract.NewRecipeInfo.RECIPE_TITLE + " = \"" + recipeTitle + "\"";
+
+
+        return selectQuery;
+
     }
 
     @Override
