@@ -41,6 +41,7 @@ Als je op de titel klikt in de titel listview wordt er een nieuwe activity geope
 #dag 12
 Gisteren is het me gelukt om in de show recipe activity in ieder geval al de titel van het recept te laten zien. Ik kwam er vandaag alleen wel achter dat hij de verkeerde titel weergeeft. 
 Ondertussen heb ik wel een nieuwe method aangemaakt in mijn Databasehelper met een query voor het ophalen van de tekst die bij de titel hoort. De query lijkt te werken, maar omdat de verkeerde titel wordt opgehaald kan er niet een bijbehorende tekst worden gevonden. 
+Spinner toegevoegd met hard coded categories.
 
 
 Wat staat er verder nog op mijn to do:
