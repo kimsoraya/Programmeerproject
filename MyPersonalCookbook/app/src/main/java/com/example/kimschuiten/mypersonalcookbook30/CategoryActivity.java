@@ -106,10 +106,12 @@ public class CategoryActivity extends AppCompatActivity {
         viewTitlesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                sqLiteDatabase = recipeDatabaseHelper.getReadableDatabase();
+
                 // Get the index of the title in the database
                 // TODO get recipe text
                 String index = ((TextView) findViewById(R.id.recipeTitle)).getText().toString();
-                String text = recipeDatabaseHelper.getRecipeText(index);
+                String text = recipeDatabaseHelper.getRecipeText(index, sqLiteDatabase);
 
                 Bundle dataBundle = new Bundle();
                 dataBundle.putString("id", index);
