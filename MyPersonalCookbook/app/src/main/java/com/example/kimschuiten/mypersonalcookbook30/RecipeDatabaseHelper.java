@@ -60,36 +60,6 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    /*
-    Read table data from the database
-     */
-/*    public RecipeDataProvider getRecipeID(String recipeTitle){
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        String selectQuery = "SELECT RECIPE_TEXT FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME +
-                " WHERE " + RecipeContract.NewRecipeInfo.RECIPE_TITLE + " = \"" + recipeTitle + "\"";
-
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        RecipeDataProvider recipeDataProvider = new RecipeDataProvider();
-
-        if(cursor != null){
-            if (cursor.moveToFirst()){
-                cursor.moveToFirst();
-                int recipeID = cursor.getInt(cursor.getColumnIndexOrThrow(RecipeContract.NewRecipeInfo.RECIPE_TITLE));
-                recipeDataProvider.setRecipeTitles(cursor.getString(1));
-                cursor.close();
-            } else {
-                recipeDataProvider = null;
-            }
-            db.close();
-            return recipeDataProvider;
-        }
-
-        return recipeDataProvider;
-    }*/
-
-
     public Cursor getRecipeInfo(SQLiteDatabase db){
         // Create object of Cursor
         Cursor cursor;
@@ -112,7 +82,14 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
 
         secondCursor = db.rawQuery(selectQuery, null);
 
-        return selectQuery;
+        if (secondCursor != null){
+            secondCursor.moveToFirst();
+        }
+
+        String recipeText = secondCursor.getString(secondCursor.getColumnIndexOrThrow
+                (RecipeContract.NewRecipeInfo.RECIPE_TEXT));
+
+        return recipeText;
     }
 
     public String[] getCategories(SQLiteDatabase db){
