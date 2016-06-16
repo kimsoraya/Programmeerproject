@@ -10,6 +10,8 @@
     <string name="saveButton">Save Recipe</string>
     <string name="homeButton">Home</string>
     <string name="add_picture_button">Add Picture</string>
+    <string name="action_settings">Settings</string>
+
 
     <string-array name="recipe_titles">
         <item>Paella</item>

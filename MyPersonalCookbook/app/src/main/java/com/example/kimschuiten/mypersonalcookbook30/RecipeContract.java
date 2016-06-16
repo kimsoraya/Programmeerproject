@@ -15,6 +15,7 @@ public class RecipeContract {
         public static final String RECIPE_CATEGORY = "category";
         public static final String RECIPE_PHOTO = "photo";
         public static final String RECIPE_TEXT = "text";
+        public static final String RECIPE_PHOTO_STYLE = "photo_recipe";
 
         // Table name
         public static final String TABLE_NAME = "recipe_info";

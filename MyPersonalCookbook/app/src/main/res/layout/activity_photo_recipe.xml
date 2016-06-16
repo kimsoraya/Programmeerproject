@@ -31,7 +31,8 @@
         android:layout_below="@+id/categoryEditText2"
         android:layout_centerHorizontal="true"
         android:text="@string/takePhotoButton"
-        android:id="@+id/takePhoto"/>
+        android:id="@+id/takePhoto"
+        android:onClick="takePhotoClick"/>
 
     <ImageView
         android:layout_width="wrap_content"

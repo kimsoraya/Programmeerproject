@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 /**
  * Class for the database operations
  */
@@ -19,6 +21,7 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
                     RecipeContract.NewRecipeInfo.RECIPE_TEXT + " TEXT," +
                     RecipeContract.NewRecipeInfo.RECIPE_TITLE + " TEXT," +
                     RecipeContract.NewRecipeInfo.RECIPE_CATEGORY + " TEXT," +
+                    RecipeContract.NewRecipeInfo.RECIPE_PHOTO_STYLE + " TEXT," +
                     RecipeContract.NewRecipeInfo.RECIPE_PHOTO + " TEXT);";
 
 
@@ -47,6 +50,9 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_CATEGORY, category);
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_PHOTO, photo);
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TEXT, text);
+/*
+        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_PHOTO_STYLE, recipe_photo);
+*/
 
         // Put all this information in the database
         db.insert(RecipeContract.NewRecipeInfo.TABLE_NAME, null, contentValues);
@@ -99,14 +105,36 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
 
     public String getRecipeText(String recipeTitle, SQLiteDatabase db){
 
-        Cursor newCursor;
+        Cursor secondCursor;
 
-        String selectQuery = "SELECT RECIPE_TEXT FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME +
+        String selectQuery = "SELECT text FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME +
                 " WHERE " + RecipeContract.NewRecipeInfo.RECIPE_TITLE + " = \"" + recipeTitle + "\"";
 
-        newCursor = db.rawQuery(selectQuery, null);
+        secondCursor = db.rawQuery(selectQuery, null);
 
         return selectQuery;
+    }
+
+    public String[] getCategories(SQLiteDatabase db){
+        // Create object of Cursor
+        Cursor thirdCursor;
+
+        String selectCategoryQuery = "SELECT category FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME;
+
+        thirdCursor = db.rawQuery(selectCategoryQuery, null);
+        ArrayList<String> spinnerContent = new ArrayList<String>();
+        if(thirdCursor.moveToFirst()) {
+            do {
+                String word = thirdCursor.getString(thirdCursor.getColumnIndexOrThrow("category"));
+                spinnerContent.add(word);
+            } while (thirdCursor.moveToNext());
+        }
+        thirdCursor.close();
+
+        String[] allSpinner = new String[spinnerContent.size()];
+        allSpinner = spinnerContent.toArray(allSpinner);
+
+        return allSpinner;
     }
 
     @Override
