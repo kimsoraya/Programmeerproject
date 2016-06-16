@@ -133,6 +133,7 @@ public class TextRecipeActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "You haven't picked Image",
                         Toast.LENGTH_LONG).show();
+                // TODO: als ik een foto neem krijg ik deze toast
             }
         } catch (Exception e) {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)

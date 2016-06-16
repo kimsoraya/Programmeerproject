@@ -3,7 +3,9 @@ package com.example.kimschuiten.mypersonalcookbook30;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
@@ -11,10 +13,12 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import java.io.File;
@@ -27,9 +31,12 @@ public class PhotoRecipeActivity extends AppCompatActivity {
     EditText photoTitleEditText;
     EditText photoCategoryEditText;
     Button takePhotoButton;
+    Button extraPictureButton;
     ImageView recipeImageView;
+    ImageView extraPictureImageView;
 
     static final int CAM_REQUEST = 1;
+    private static int RESULT_LOAD_IMG = 1;
     Context context = this;
     String mCurrentPhotoPath;
     RecipeDatabaseHelper recipeDatabaseHelper;
@@ -44,8 +51,57 @@ public class PhotoRecipeActivity extends AppCompatActivity {
         photoCategoryEditText = (EditText) findViewById(R.id.categoryEditText2);
         takePhotoButton = (Button) findViewById(R.id.takePhoto);
         recipeImageView = (ImageView) findViewById(R.id.recipePictureImageView);
+        extraPictureButton = (Button) findViewById(R.id.addExtraPictureButton);
+        extraPictureImageView = (ImageView) findViewById(R.id.showExtraPicture);
 
         Intent photoIntent = getIntent();
+    }
+
+
+    /*
+ Open pop up menu to choose between photo or picture gallery
+  */
+    public void onAddPictureClick(View view) {
+        PopupMenu popupMenu = new PopupMenu(context, view);
+        popupMenu.inflate(R.menu.picture_menu);
+        popupMenu.show();
+
+        // Set onclicklistener for the two optiosn
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                // Open camera when clicked on "Take Photo"
+                if (item.getItemId() == R.id.item1) {
+                    // Start camera intent
+                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                    // Ensure that there's a camera activity to handle the intent
+                    if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+                        // Create the file where the photo should go
+                        File photo = null;
+                        try {
+                            photo = createImageFile();
+                        } catch (IOException ex) {
+                            // Error occurred while creating the File
+                        }
+                        // Continue only if the File was successfully created
+                        if (photo != null) {
+                            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photo));
+                            startActivityForResult(cameraIntent, CAM_REQUEST);
+                        }
+                    }
+                }
+                // Go to gallery when clicked on "Gallery"
+                if (item.getItemId() == R.id.item2) {
+                    // Create intent to open Gallery
+                    Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    // Start the Intent
+                    startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+                }
+                return false;
+            }
+        });
     }
 
     public void HomeButtonClick(View view) {
@@ -54,33 +110,42 @@ public class PhotoRecipeActivity extends AppCompatActivity {
         startActivity(mainIntent);
     }
 
-    public void takePhotoClick(View view) {
-        // Start camera intent
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        // Ensure that there's a camera activity to handle the intent
-        if(cameraIntent.resolveActivity(getPackageManager()) != null){
-            // Create the file where the photo should go
-            File photo = null;
-            try{
-                photo = createImageFile();
-            }catch (IOException ex){
-                // Error occurred while creating the File
-            }
-            // Continue only if the File was successfully created
-            if(photo != null){
-                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photo));
-                startActivityForResult(cameraIntent, CAM_REQUEST);
-            }
-
-        }
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Get the image and put it in the ImageView
-        recipeImageView.setImageURI(Uri.parse(mCurrentPhotoPath));
+        try {
+            // When an Image is picked
+            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
+                    && null != data) {
+                // Get the Image from data
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
+                // Get the cursor
+                Cursor cursor = getContentResolver().query(selectedImage,
+                        filePathColumn, null, null, null);
+                // Move to first row
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                mCurrentPhotoPath = cursor.getString(columnIndex);
+                cursor.close();
+                // Set the Image in ImageView after decoding the String
+                extraPictureImageView.setImageBitmap(BitmapFactory
+                        .decodeFile(mCurrentPhotoPath));
+
+            } else {
+                Toast.makeText(this, "You haven't picked Image",
+                        Toast.LENGTH_LONG).show();
+                // TODO: als ik een foto neem krijg ik deze toast
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
+                    .show();
+        }
+
+        /*// Get the image and put it in the ImageView
+        recipeImageView.setImageURI(Uri.parse(mCurrentPhotoPath));
+*/
     }
 
     /*
@@ -122,7 +187,7 @@ public class PhotoRecipeActivity extends AppCompatActivity {
 
         // Perform database insertion
 /*
-        recipeDatabaseHelper.addRecipeInfo(title, category, photo, sqLiteDatabase);
+        recipeDatabaseHelper.addRecipeInfo(text, title, category, photo, sqLiteDatabase);
 */
 
         // TODO: create a separate column for photo recipes????? Or make an if/else statement in which

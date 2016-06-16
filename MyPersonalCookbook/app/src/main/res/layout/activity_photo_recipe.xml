@@ -18,6 +18,15 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_picture_button"
+        android:id="@+id/addExtraPictureButton"
+        android:onClick="onAddPictureClick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true" />
+
     <EditText
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -37,8 +46,16 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/showExtraPicture"
+        android:layout_below="@+id/takePhoto" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/recipePictureImageView"
-        android:layout_below="@+id/takePhoto"/>
+        android:layout_below="@+id/showExtraPicture" />
+
+
 
     <Button
         android:layout_width="wrap_content"
