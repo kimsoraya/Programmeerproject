@@ -52,9 +52,7 @@ public class TextRecipeActivity extends AppCompatActivity {
         saveRecipeButton = (Button) findViewById(R.id.saveButton);
         showPhotoImageView = (ImageView) findViewById(R.id.recipePhotoImageView);
 
-
         Intent textIntent = getIntent();
-
     }
 
     /*
@@ -78,7 +76,6 @@ public class TextRecipeActivity extends AppCompatActivity {
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photo));
                 startActivityForResult(cameraIntent, CAM_REQUEST);
             }
-
         }
     }
 
@@ -86,14 +83,6 @@ public class TextRecipeActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Get the image and put it in the ImageView
         showPhotoImageView.setImageURI(Uri.parse(mCurrentPhotoPath));
-
-
-       /* // Show thumbnail of photo in the activity
-        if (requestCode == CAM_REQUEST && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            showPhotoImageView.setImageBitmap(imageBitmap);
-        }*/
     }
 
 
@@ -111,8 +100,6 @@ public class TextRecipeActivity extends AppCompatActivity {
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
-
-
         );
 
         // Save a file: path for use with ACTION_VIEW intents
@@ -138,36 +125,11 @@ public class TextRecipeActivity extends AppCompatActivity {
         sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
 
         // Perform database insertion
-        recipeDatabaseHelper.addRecipeInfo(title, category, photo, text, sqLiteDatabase);
+        recipeDatabaseHelper.addRecipeInfo(text, title, category, photo, sqLiteDatabase);
 
         // Close the database
         Toast.makeText(getBaseContext(), "Recipe Saved!", Toast.LENGTH_SHORT).show();
         recipeDatabaseHelper.close();
-
-  /*      // Send the information to the listview in CategoryActivity
-        CategoryActivity.this.recipeTitles.add(title);
-        // We notify the data model is changed
-        MainActivity.this.adapter.notifyDataSetChanged();
-        String category = textCategoryEditText.getText().toString();
-        String text = textTextEditText.getText().toString();
-        // Define filenames
-        String fileName = "saved_titles";
-        String fileName2 = "saved_categories";
-        String fileName3 = "saved_texts";
-        // Create an object of fileoutputstream
-        try {
-            FileOutputStream fileOutputStream = openFileOutput(fileName, MODE_PRIVATE);
-            fileOutputStream.write(title.getBytes());
-            fileOutputStream.close();
-            Toast.makeText(getApplicationContext(), "Recipe Saved!", Toast.LENGTH_SHORT).show();
-            textTitleEditText.setText("");
-            textCategoryEditText.setText("");
-            textTextEditText.setText("");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
     }
 
     public void HomeButtonClick(View view) {
