@@ -55,7 +55,6 @@ In de recepttitel listview staat nu wel eindelijk een foto! Maar dat lijkt allee
 
 Wat staat er verder nog op mijn to do:
 - Ophalen van foto's uit sqlite met photo path en image view stoppen van category activity
-- Hoe kan ik het beste de recepten van de "foto recepten" opslaan. Wellicht moet ik daar een aparte tabel voor aanmaken in mijn database.
 - Recepten koppelen aan categorieen.
 - Zorgen dat als er op een recept wordt geklikt de user het recept in juiste weergave ziet. Dit betekend bovenaan de (juiste) titel en daaronder de uitleg in tekst of foto-vorm. 
 
