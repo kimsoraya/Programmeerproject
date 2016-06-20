@@ -46,7 +46,6 @@ public class TextRecipeActivity extends AppCompatActivity {
     static final int CAM_REQUEST = 1;
     private static int RESULT_LOAD_IMG = 2;
     String mCurrentPhotoPath;
-    String mCurrentImagePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,11 +124,11 @@ public class TextRecipeActivity extends AppCompatActivity {
                 cursor.moveToFirst();
 
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                mCurrentImagePath = cursor.getString(columnIndex);
+                mCurrentPhotoPath = cursor.getString(columnIndex);
                 cursor.close();
                 // Set the Image in ImageView after decoding the String
                 showPhotoImageView.setImageBitmap(BitmapFactory
-                        .decodeFile(mCurrentImagePath));
+                        .decodeFile(mCurrentPhotoPath));
             }
             // When a photo is taked with the camera
             else if (requestCode == CAM_REQUEST && resultCode == RESULT_OK) {
@@ -147,8 +146,8 @@ public class TextRecipeActivity extends AppCompatActivity {
     }
 
     /**
-    * Create a folder where the photos will be stored.
-    * Also a new file name for each new photo
+     * Create a folder where the photos will be stored.
+     * Also a new file name for each new photo
     **/
     private File createImageFile() throws IOException {
         // Create an image file name
@@ -161,17 +160,15 @@ public class TextRecipeActivity extends AppCompatActivity {
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
-
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = "file:" + image.getAbsolutePath();
         Log.e("PHOTO PATH1", mCurrentPhotoPath);
 
         return image;
-
     }
-    /*
-    Save title, category en text to Recipe Object
-     */
+    /**
+      * Save title, category en text to Recipe Object
+     **/
     public void saveRecipeButtonClick(View view){
         // Get the information from the EditTexts
         String title = textTitleEditText.getText().toString();
@@ -197,7 +194,6 @@ public class TextRecipeActivity extends AppCompatActivity {
             // Perform database insertion
             recipeDatabaseHelper.addRecipeInfoTwo(text, title, category, sqLiteDatabase);
         }
-
         // Close the database
         Toast.makeText(getBaseContext(), "Recipe Saved!", Toast.LENGTH_SHORT).show();
         recipeDatabaseHelper.close();

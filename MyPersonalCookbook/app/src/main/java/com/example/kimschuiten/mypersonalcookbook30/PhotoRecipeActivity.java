@@ -112,7 +112,6 @@ public class PhotoRecipeActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO: If gallery option was choosen:
         try {
             // When an Image is picked
             if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
@@ -128,29 +127,31 @@ public class PhotoRecipeActivity extends AppCompatActivity {
                 cursor.moveToFirst();
 
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                mDishPicturePath = cursor.getString(columnIndex);
+                mCurrentPhotoPath = cursor.getString(columnIndex);
                 cursor.close();
                 // Set the Image in ImageView after decoding the String
                 extraPictureImageView.setImageBitmap(BitmapFactory
-                        .decodeFile(mDishPicturePath));
-            } else {
-                Toast.makeText(this, "You haven't picked Image",
+                        .decodeFile(mCurrentPhotoPath));
+            }
+            // When a photo is taked with the camera
+            else if (requestCode == CAM_REQUEST && resultCode == RESULT_OK) {
+                // Get the image and put it in the ImageView
+                extraPictureImageView.setImageURI(Uri.parse(mCurrentPhotoPath));
+
+            } else{
+                Toast.makeText(this, "You haven't picked an Image",
                         Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
                     .show();
         }
-        // TODO: else:
-        /*// Get the image and put it in the ImageView
-        extraPictureImageView.setImageURI(Uri.parse(mCurrentPhotoPath));
-*/
     }
 
-    /*
-    Create a folder where the photos will be stored.
-    Also a new file name for each new photo
-   */
+    /**
+    * Create a folder where the photos will be stored.
+    * Also a new file name for each new photo
+   **/
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -170,9 +171,9 @@ public class PhotoRecipeActivity extends AppCompatActivity {
         return image;
     }
 
-    /*
-    Save title, category en text to Recipe Object
-     */
+    /**
+     * Save title, category en text to Recipe Object
+     **/
     public void saveRecipeButtonClick(View view){
         // Get the information from the EditTexts
         String title = photoTitleEditText.getText().toString();
