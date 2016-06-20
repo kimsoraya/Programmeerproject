@@ -50,11 +50,17 @@ Popupmenu toegevoegd in het aanmaken van een recept zodat de user ook een image 
 De query in mijn getRecipeText werkt nu ook eindelijk. Alleen haalt hij dus de verkeerde tekst op. 
 In de recepttitel listview staat nu wel eindelijk een foto! Maar dat lijkt alleen te werken met afbeeldingen die uit de gallery komen. 
 
-
+#dag 14
+Out of memory error verholpen door mijn Bitmap method aan te passen. 
+In de listview kunnen nu recepten met en zonder plaatje staan.
+Je kan nu een foto en een gallery image toevoegen aan een recipt. Alleen komen alle images niet meer in de listview. 
+Gallery images zijn wel weer te zien in de listview. Alleen de zelfgemaakte foto's niet. 
+De save button blijft nu altijd zichtbaar als je een extra foto toevoegt. 
+Het pop up menu van de take photo button werkt. De beelden worden nu alleen nog wel in de image view van de extra image geladen. 
+Ik kan nu twee foto's uploaden in de foto recipe activity.
 
 
 Wat staat er verder nog op mijn to do:
-- Ophalen van foto's uit sqlite met photo path en image view stoppen van category activity
-- Recepten koppelen aan categorieen.
+- Ophalen van foto's uit sqlite met photo path en image view stoppen van category activity.
 - Zorgen dat als er op een recept wordt geklikt de user het recept in juiste weergave ziet. Dit betekend bovenaan de (juiste) titel en daaronder de uitleg in tekst of foto-vorm. 
 
