@@ -10,15 +10,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.io.File;
+
 public class ShowRecipeActivity extends AppCompatActivity {
     TextView recipeText;
     TextView recipeTitleView;
+    ImageView recipePhoto;
     String mRecipeTitle;
     String mRecipeText;
+    String photoPath;
 
 
     // Database objects
@@ -32,39 +37,37 @@ public class ShowRecipeActivity extends AppCompatActivity {
 
         recipeText = (TextView) findViewById(R.id.recipeTextView);
         recipeTitleView = (TextView) findViewById(R.id.showRecipeTitle);
+        recipePhoto = (ImageView) findViewById(R.id.recipeImageView);
 
         // Initialize database
         recipeDatabaseHelper = new RecipeDatabaseHelper(getApplicationContext());
         sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
 
-        // Haal de titel en tekst op uit vorige activity
+        // Get the title and text from the previous activity
         Bundle extras = getIntent().getExtras();
         mRecipeTitle = extras.getString("id");
         mRecipeText = extras.getString("text");
+/*
+        photoPath = extras.getString("photoPath");
+*/
         Log.d("TEST INDEX", "OPGEHAALDE INDEX = " + mRecipeTitle);
 
+        // Show the title en text
         recipeTitleView.setText(mRecipeTitle);
         recipeText.setText(mRecipeText);
-
-        // TODO haal de tekst op die bij de titel hoort
-
 /*
-        if (extras != null) {
-            String Value = extras.getString("id");
-
-
-            // Analyze cursor object: Is there data available on the cursor object?
-            Cursor cursor = recipeDatabaseHelper.getRecipeInfo(Value);
-            index = Value;
-            cursor.moveToFirst();
-
-            String text = cursor.getString(2);
-
-            }
+        recipePhoto.setImageBitmap(convertSrcToBitmap(photoPath));
 */
         }
 
-
+    public Bitmap convertSrcToBitmap(String imageSrc) {
+        Bitmap myBitmap = null;
+        File imgFile = new File(imageSrc);
+        if (imgFile.exists()) {
+            myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+        }
+        return myBitmap;
+    }
 
     public void HomeButtonClick(View view) {
         // Go back to main screen

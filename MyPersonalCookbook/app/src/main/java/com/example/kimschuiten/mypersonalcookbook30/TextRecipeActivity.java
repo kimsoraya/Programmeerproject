@@ -37,7 +37,6 @@ public class TextRecipeActivity extends AppCompatActivity {
     Button saveRecipeButton;
     ImageView showPhotoImageView;
 
-
     Context context = this;
     RecipeDatabaseHelper recipeDatabaseHelper;
     SQLiteDatabase sqLiteDatabase;
@@ -45,7 +44,6 @@ public class TextRecipeActivity extends AppCompatActivity {
     static final int CAM_REQUEST = 1;
     private static int RESULT_LOAD_IMG = 1;
     String mCurrentPhotoPath;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,15 +174,28 @@ public class TextRecipeActivity extends AppCompatActivity {
         String title = textTitleEditText.getText().toString();
         String category = textCategoryEditText.getText().toString();
         String text = textTextEditText.getText().toString();
-        // Get the path of the photo as a String
-        String photo = String.valueOf(Uri.parse(mCurrentPhotoPath));
 
-        // Initialize recipe db object + sqlitedatabase object
-        recipeDatabaseHelper = new RecipeDatabaseHelper(context);
-        sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
+        if (mCurrentPhotoPath != null){
+            // Get the path of the photo as a String
+            String photo = String.valueOf(Uri.parse(mCurrentPhotoPath));
 
-        // Perform database insertion
-        recipeDatabaseHelper.addRecipeInfo(text, title, category, photo, sqLiteDatabase);
+            // Initialize recipe db object + sqlitedatabase object
+            recipeDatabaseHelper = new RecipeDatabaseHelper(context);
+            sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
+
+            // Perform database insertion
+            recipeDatabaseHelper.addRecipeInfo(text, title, category, photo, sqLiteDatabase);
+        }
+        else{
+            // Initialize recipe db object + sqlitedatabase object
+            recipeDatabaseHelper = new RecipeDatabaseHelper(context);
+            sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
+
+            // Perform database insertion
+            recipeDatabaseHelper.addRecipeInfoTwo(text, title, category, sqLiteDatabase);
+        }
+
+
 
         // Close the database
         Toast.makeText(getBaseContext(), "Recipe Saved!", Toast.LENGTH_SHORT).show();

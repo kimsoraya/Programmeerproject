@@ -5,7 +5,7 @@
     <string name="title_activity_text_photo">TextPhoto</string>
     <string name="titleEditText">Recipe Title</string>
     <string name="categorieEditText">Recipe Category</string>
-    <string name="takePhotoButton">Take Photo</string>
+    <string name="takePhotoButton">Take Photo!</string>
     <string name="title_activity_photo_recipe">PhotoRecipeActivity</string>
     <string name="saveButton">Save Recipe</string>
     <string name="homeButton">Home</string>

@@ -19,31 +19,24 @@ import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CategoryActivity extends AppCompatActivity {
 
-    TextView viewTitlesTextView;
     ListView viewTitlesListView;
 
     // Create objects for information in the listview and the custom adapter
-/*
-    int[] recipeImageResource = {R.drawable.paella, R.drawable.pastapesto};
-*/
     String[] recipeTitles;
     String text;
     String title;
     RecipeAdapter adapter;
-/*
-    ArrayList<String> getSets;
-*/
 
     // Database objects
     SQLiteDatabase sqLiteDatabase;
     RecipeDatabaseHelper recipeDatabaseHelper;
     Cursor cursor;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +44,6 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category);
 
         // Initialize
-        viewTitlesTextView = (TextView) findViewById(R.id.recipeList);
         viewTitlesListView = (ListView) findViewById(R.id.recipeListView);
         adapter = new RecipeAdapter(getApplicationContext(), R.layout.single_list_item);
         recipeTitles = getResources().getStringArray(R.array.recipe_titles);
@@ -78,25 +70,18 @@ public class CategoryActivity extends AppCompatActivity {
                     titles = cursor.getString(0);
                     imagePath = cursor.getString(1);
 
-                  /*  // Get the Bitmap
-                    Uri uri = Uri.parse("file://" + imagePath);
-                    try {
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }*/
-
-                    // Get the titles and image paths from the database
-                    RecipeDataProvider recipeDataProvider = new RecipeDataProvider(convertSrcToBitmap(imagePath), titles);
-
-                    // Add them to the listview
-                    adapter.add(recipeDataProvider);
-
-                    /*long selectedImageUri = ContentUris.parseId(Uri.fromFile(new File(imagePath)));
-                    Bitmap bm = MediaStore.Images.Thumbnails.getThumbnail(
-                            mContext.getContentResolver(), selectedImageUri, MediaStore.Images.Thumbnails.MICRO_KIND,
-                            null);*/
-
+                    if (imagePath != null) {
+                        // Get the titles and image paths from the database
+                        RecipeDataProvider recipeDataProvider = new RecipeDataProvider(convertSrcToBitmap(imagePath), titles);
+                        // Add them to the listview
+                        adapter.add(recipeDataProvider);
+                    }
+                    else{
+                        // Get the titles from the database
+                        RecipeDataProvider recipeDataProvider = new RecipeDataProvider(titles);
+                        // Add them to the listview
+                        adapter.add(recipeDataProvider);
+                    }
                 }
                 while (cursor.moveToNext());
             }
@@ -108,14 +93,19 @@ public class CategoryActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 sqLiteDatabase = recipeDatabaseHelper.getReadableDatabase();
 
-                // Get the index of the title in the database
-                // TODO get recipe text
+                // Get the index of the title in the database, use it to get the text/photo text
                 String index = ((TextView) findViewById(R.id.recipeTitle)).getText().toString();
                 String text = recipeDatabaseHelper.getRecipeText(index, sqLiteDatabase);
+/*
+                String photoPath = recipeDatabaseHelper.getRecipePhotoText(index, sqLiteDatabase);
+*/
 
                 Bundle dataBundle = new Bundle();
                 dataBundle.putString("id", index);
                 dataBundle.putString("text", text);
+/*
+                dataBundle.putString("photoPath", photoPath);
+*/
 
                 // Go to ShowRecipeActivity
                 Intent showIntent = new Intent(view.getContext(), ShowRecipeActivity.class);
@@ -132,7 +122,7 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
     }
-
+/*
     public Uri getImageUri(Context inContext, Bitmap inImage, String imageName) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
@@ -145,13 +135,16 @@ public class CategoryActivity extends AppCompatActivity {
         cursor.moveToFirst();
         int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
         return cursor.getString(idx);
-    }
+    }*/
 
     public Bitmap convertSrcToBitmap(String imageSrc) {
         Bitmap myBitmap = null;
         File imgFile = new File(imageSrc);
+
         if (imgFile.exists()) {
-            myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            final BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 8;
+            myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath(), options);
         }
         return myBitmap;
     }

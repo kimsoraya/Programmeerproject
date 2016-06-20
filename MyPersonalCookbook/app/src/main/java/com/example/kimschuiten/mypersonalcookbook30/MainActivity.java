@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     Button viewMenu;
-    Button addRecipe;
+    ImageView addRecipe;
 
     private ArrayAdapter<String> listAdapter;
     SQLiteDatabase sqLiteDatabase;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         viewMenu = (Button) findViewById(R.id.menuButton);
-        addRecipe = (Button) findViewById(R.id.addButton);
+        addRecipe = (ImageView) findViewById(R.id.addButton);
 
         Intent mainIntent = getIntent();
 
@@ -50,7 +51,10 @@ public class MainActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                return;
+                /*// Open new activity with all the recipe items
+                Intent viewCategoryIntent = new Intent(MainActivity.this, CategoryActivity.class);
+                startActivity(viewCategoryIntent);
+                */return;
             }
 
             @Override
@@ -58,16 +62,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
-    @Override
+/*    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
-    }
+    }*/
 
-    @Override
+/*    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -83,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     /*
     onClickListener to show the menu options

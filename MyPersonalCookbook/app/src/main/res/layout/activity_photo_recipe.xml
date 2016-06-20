@@ -7,41 +7,68 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#fddca6"
     tools:context="com.example.kimschuiten.mypersonalcookbook30.PhotoRecipeActivity">
 
 
     <EditText
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/titleEditText2"
         android:hint="@string/titleEditText"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="#fae5d1" />
 
-    <Button
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/plusbutton"
+        android:id="@+id/addExtraPictureButton"
+        android:onClick="onAddPictureClick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
+
+  <!--  <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_picture_button"
         android:id="@+id/addExtraPictureButton"
         android:onClick="onAddPictureClick"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:background="#b34708"
+        android:textColor="#faf6f6"/>-->
 
     <EditText
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/categoryEditText2"
         android:hint="@string/categorieEditText"
-        android:layout_below="@+id/titleEditText2" />
+        android:layout_below="@+id/titleEditText2"
+        android:background="#fae5d1"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/categoryEditText2"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:text="@string/takePhotoButton"
         android:id="@+id/takePhoto"
-        android:onClick="takePhotoClick"/>
+        android:onClick="takePhotoClick"
+        android:background="#b34708"
+        android:textColor="#faf6f6"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/saveButton"
+        android:id="@+id/saveButton"
+        android:onClick="saveRecipeButtonClick"
+        android:background="#b34708"
+        android:textColor="#faf6f6"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -64,5 +91,7 @@
         android:layout_alignParentBottom="true"
         android:text="@string/homeButton"
         android:id="@+id/HomeButton"
-        android:onClick="HomeButtonClick"/>
+        android:onClick="HomeButtonClick"
+        android:background="#b34708"
+        android:textColor="#faf6f6"/>
 </RelativeLayout>

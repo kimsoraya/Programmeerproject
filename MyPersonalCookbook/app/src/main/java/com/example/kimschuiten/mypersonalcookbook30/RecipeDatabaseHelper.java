@@ -60,6 +60,39 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    /*
+   Define a method for inserting data without a dish picture
+    */
+    public void addRecipeInfoTwo(String text, String title, String category, SQLiteDatabase db){
+        // Create object of contentValues to create map values
+        ContentValues contentValues = new ContentValues();
+        // Specify key and the data
+        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TITLE, title);
+        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_CATEGORY, category);
+        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TEXT, text);
+
+        // Put all this information in the database
+        db.insert(RecipeContract.NewRecipeInfo.TABLE_NAME, null, contentValues);
+        Log.e("DATABASE OPERATIONS", "One row is inserted");
+    }
+    /*
+  Define a method for inserting the data with photo recipe
+   */
+    public void addPhotoRecipeInfo(String recipePhoto, String title, String category, String photo, SQLiteDatabase db){
+        // Create object of contentValues to create map values
+        ContentValues contentValues = new ContentValues();
+        // Specify key and the data
+        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TITLE, title);
+        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_CATEGORY, category);
+        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_PHOTO, photo);
+        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TEXT, recipePhoto);
+
+        // Put all this information in the database
+        db.insert(RecipeContract.NewRecipeInfo.TABLE_NAME, null, contentValues);
+        Log.e("DATABASE OPERATIONS", "One row is inserted");
+    }
+
+
     public Cursor getRecipeInfo(SQLiteDatabase db){
         // Create object of Cursor
         Cursor cursor;
@@ -73,6 +106,39 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+/*    *//*
+    Get recipe info without dish image
+     *//*
+    public Cursor getRecipeInfoSimple(SQLiteDatabase db){
+        // Create object of Cursor
+        Cursor cursor;
+
+        // Create some projections: the needed column names.
+        String[] projections = {RecipeContract.NewRecipeInfo.RECIPE_TITLE};
+
+        cursor = db.query(RecipeContract.NewRecipeInfo.TABLE_NAME, projections, null, null, null, null, null);
+
+        return cursor;
+    }*/
+
+    public String getRecipePhotoText(String photoRecipeTitle, SQLiteDatabase db){
+        Cursor fourthCursor;
+
+        String selectQuery = "SELECT photo_recipe FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME +
+                " WHERE " + RecipeContract.NewRecipeInfo.RECIPE_PHOTO_STYLE + " = \"" + photoRecipeTitle
+                + "\"";
+
+        fourthCursor = db.rawQuery(selectQuery, null);
+        if (fourthCursor != null){
+            fourthCursor.moveToFirst();
+        }
+
+        String recipePhoto = fourthCursor.getString(fourthCursor.getColumnIndexOrThrow(RecipeContract.
+                NewRecipeInfo.RECIPE_PHOTO_STYLE));
+
+        return recipePhoto;
+    }
+
     public String getRecipeText(String recipeTitle, SQLiteDatabase db){
 
         Cursor secondCursor;
@@ -81,7 +147,6 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
                 " WHERE " + RecipeContract.NewRecipeInfo.RECIPE_TITLE + " = \"" + recipeTitle + "\"";
 
         secondCursor = db.rawQuery(selectQuery, null);
-
         if (secondCursor != null){
             secondCursor.moveToFirst();
         }

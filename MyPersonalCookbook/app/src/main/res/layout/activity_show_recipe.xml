@@ -7,6 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#fddca6"
     tools:context="com.example.kimschuiten.mypersonalcookbook30.ShowRecipeActivity">
 
     <TextView
@@ -16,10 +17,22 @@
         android:textStyle="bold"
         android:textSize="15pt" />
 
+    <View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:background="#000000"
+    android:layout_alignBottom="@+id/showRecipeTitle"></View>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/recipeTextView"
+        android:layout_below="@+id/showRecipeTitle"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/recipeImageView"
         android:layout_below="@+id/showRecipeTitle"/>
 
     <Button
@@ -29,5 +42,7 @@
         android:layout_alignParentBottom="true"
         android:text="@string/homeButton"
         android:id="@+id/HomeButton"
-        android:onClick="HomeButtonClick"/>
+        android:onClick="HomeButtonClick"
+        android:background="#b34708"
+        android:textColor="#faf6f6"/>
 </RelativeLayout>
