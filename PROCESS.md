@@ -43,11 +43,18 @@ Gisteren is het me gelukt om in de show recipe activity in ieder geval al de tit
 Ondertussen heb ik wel een nieuwe method aangemaakt in mijn Databasehelper met een query voor het ophalen van de tekst die bij de titel hoort. De query lijkt te werken, maar omdat de verkeerde titel wordt opgehaald kan er niet een bijbehorende tekst worden gevonden. 
 Spinner toegevoegd met hard coded categories.
 
+#dag 13
+Spinner haalt content op uit database, maar om de een of andere reden laat hij de photo paths zien in plaats van de categorieen. 
+Dit bleek fout te gaan in het aanmaken van de recepten. Ik had de informatie in de verkeerde volgorde gelaad, waardoor de informatie in de verkeerde kolommen terecht kwam. Wanneer ik het hele recept wil bekijken gaat het echter alsnog mis, ik krijg de verkeerde titel te zien en de query werkt niet. 
+Popupmenu toegevoegd in het aanmaken van een recept zodat de user ook een image uit de gallery kan kiezen. Hierdoor slaat hij alleen niet meer de image die met de camere wordt gemaakt.
+De query in mijn getRecipeText werkt nu ook eindelijk. Alleen haalt hij dus de verkeerde tekst op. 
+In de recepttitel listview staat nu wel eindelijk een foto! Maar dat lijkt alleen te werken met afbeeldingen die uit de gallery komen. 
+
+
+
 
 Wat staat er verder nog op mijn to do:
-- Zorgen dat de juiste titels worden weergegeven en daarmee de juiste tekst kan worden opgehaald. 
 - Ophalen van foto's uit sqlite met photo path en image view stoppen van category activity
-- Hoe kan ik het beste de recepten van de "foto recepten" opslaan. Wellicht moet ik daar een aparte tabel voor aanmaken in mijn database.
-- Zorgen dat als er op een recept wordt geklikt de user het recept in juiste weergave ziet. Dit betekend bovenaan een titel en daaronder de uitleg in tekst of foto-vorm. 
-- Aanmaken categorieen. 
+- Recepten koppelen aan categorieen.
+- Zorgen dat als er op een recept wordt geklikt de user het recept in juiste weergave ziet. Dit betekend bovenaan de (juiste) titel en daaronder de uitleg in tekst of foto-vorm. 
 
