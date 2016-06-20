@@ -10,16 +10,15 @@
     android:background="#fddca6"
     tools:context="com.example.kimschuiten.mypersonalcookbook30.MainActivity">
 
-    <Spinner
+   <!-- <Spinner
         android:id="@+id/spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/categoryTextView" />
-
+-->
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:src="@drawable/cookbooklogo"/>
 
     <Button
@@ -28,13 +27,14 @@
         android:text="View all recipes"
         android:id="@+id/menuButton"
         android:onClick="menuButtonClick"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:background="#b34708"
         android:textColor="#faf6f6"
-        android:elegantTextHeight="false" />
+        android:elegantTextHeight="false"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
 
-    <TextView
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/menuButton"
@@ -43,7 +43,7 @@
         android:textSize="10pt"
         android:text="Categories:"
         android:textColor="#080808" />
-
+-->
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"

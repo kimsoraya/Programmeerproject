@@ -1,5 +1,6 @@
 package com.example.kimschuiten.mypersonalcookbook30;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -26,6 +27,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -42,8 +44,9 @@ public class TextRecipeActivity extends AppCompatActivity {
     SQLiteDatabase sqLiteDatabase;
 
     static final int CAM_REQUEST = 1;
-    private static int RESULT_LOAD_IMG = 1;
+    private static int RESULT_LOAD_IMG = 2;
     String mCurrentPhotoPath;
+    String mCurrentImagePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +62,9 @@ public class TextRecipeActivity extends AppCompatActivity {
         Intent textIntent = getIntent();
     }
 
-    /*
-   Open pop up menu to choose between photo or picture gallery
-    */
+    /**
+     * Open pop up menu to choose between photo or picture gallery
+    **/
     public void onAddPictureClick(View view) {
         PopupMenu popupMenu = new PopupMenu(context, view);
         popupMenu.inflate(R.menu.picture_menu);
@@ -122,31 +125,31 @@ public class TextRecipeActivity extends AppCompatActivity {
                 cursor.moveToFirst();
 
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                mCurrentPhotoPath = cursor.getString(columnIndex);
+                mCurrentImagePath = cursor.getString(columnIndex);
                 cursor.close();
                 // Set the Image in ImageView after decoding the String
                 showPhotoImageView.setImageBitmap(BitmapFactory
-                        .decodeFile(mCurrentPhotoPath));
+                        .decodeFile(mCurrentImagePath));
+            }
+            // When a photo is taked with the camera
+            else if (requestCode == CAM_REQUEST && resultCode == RESULT_OK) {
+                // Get the image and put it in the ImageView
+                showPhotoImageView.setImageURI(Uri.parse(mCurrentPhotoPath));
 
-            } else {
-                Toast.makeText(this, "You haven't picked Image",
+            } else{
+                Toast.makeText(this, "You haven't picked an Image",
                         Toast.LENGTH_LONG).show();
-                // TODO: als ik een foto neem krijg ik deze toast
             }
         } catch (Exception e) {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
                     .show();
         }
-
-        /*// Get the image and put it in the ImageView
-        showPhotoImageView.setImageURI(Uri.parse(mCurrentPhotoPath));*/
     }
 
-
-    /*
-   Create a folder where the photos will be stored.
-   Also a new file name for each new photo
-    */
+    /**
+    * Create a folder where the photos will be stored.
+    * Also a new file name for each new photo
+    **/
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -194,8 +197,6 @@ public class TextRecipeActivity extends AppCompatActivity {
             // Perform database insertion
             recipeDatabaseHelper.addRecipeInfoTwo(text, title, category, sqLiteDatabase);
         }
-
-
 
         // Close the database
         Toast.makeText(getBaseContext(), "Recipe Saved!", Toast.LENGTH_SHORT).show();

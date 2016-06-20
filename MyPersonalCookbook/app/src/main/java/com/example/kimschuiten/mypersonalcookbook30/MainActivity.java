@@ -37,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
         Intent mainIntent = getIntent();
 
-        // Spinner element
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+       /* // Spinner element
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);*/
 
         RecipeDatabaseHelper recipeDatabaseHelper = new RecipeDatabaseHelper(MainActivity.this);
         sqLiteDatabase = recipeDatabaseHelper.getReadableDatabase();
 
-        String[] spinnerLists = recipeDatabaseHelper.getCategories(sqLiteDatabase);
+     /*   String[] spinnerLists = recipeDatabaseHelper.getCategories(sqLiteDatabase);
 
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_spinner_item, spinnerLists);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -51,17 +51,17 @@ public class MainActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                /*// Open new activity with all the recipe items
+                // Open new activity with all the recipe items
                 Intent viewCategoryIntent = new Intent(MainActivity.this, CategoryActivity.class);
                 startActivity(viewCategoryIntent);
-                */return;
+                return;
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
 
     }
 

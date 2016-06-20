@@ -27,13 +27,15 @@ public class RecipeDataProvider {
 
     // Constructor
     public RecipeDataProvider(Bitmap recipeImageResource, String recipeTitles){
-        if(recipeImageResource == null){
+    /*    if(recipeImageResource == null){
             this.recipeTitles = recipeTitles;
         }
         else {
             this.recipeTitles = recipeTitles;
             this.recipeImageResource = recipeImageResource;
-        }
+        }*/
+        this.recipeTitles = recipeTitles;
+        this.recipeImageResource = recipeImageResource;
     }
 
     public RecipeDataProvider(String recipeTitles) {
