@@ -53,7 +53,9 @@ public class TextRecipeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_text_recipe);
 
         textTitleEditText = (EditText) findViewById(R.id.titleEditText);
+/*
         textCategoryEditText = (EditText) findViewById(R.id.categoryEditText);
+*/
         textTextEditText = (EditText) findViewById(R.id.recipeText);
         saveRecipeButton = (Button) findViewById(R.id.saveButton);
         showPhotoImageView = (ImageView) findViewById(R.id.recipePhotoImageView);
@@ -172,7 +174,9 @@ public class TextRecipeActivity extends AppCompatActivity {
     public void saveRecipeButtonClick(View view){
         // Get the information from the EditTexts
         String title = textTitleEditText.getText().toString();
+/*
         String category = textCategoryEditText.getText().toString();
+*/
         String text = textTextEditText.getText().toString();
 
         if (mCurrentPhotoPath != null){
@@ -184,7 +188,7 @@ public class TextRecipeActivity extends AppCompatActivity {
             sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
 
             // Perform database insertion
-            recipeDatabaseHelper.addRecipeInfo(text, title, category, photo, sqLiteDatabase);
+            recipeDatabaseHelper.addRecipeInfo(text, title, photo, sqLiteDatabase);
         }
         else{
             // Initialize recipe db object + sqlitedatabase object
@@ -192,7 +196,7 @@ public class TextRecipeActivity extends AppCompatActivity {
             sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
 
             // Perform database insertion
-            recipeDatabaseHelper.addRecipeInfoTwo(text, title, category, sqLiteDatabase);
+            recipeDatabaseHelper.addRecipeInfoTwo(text, title, sqLiteDatabase);
         }
         // Close the database
         Toast.makeText(getBaseContext(), "Recipe Saved!", Toast.LENGTH_SHORT).show();

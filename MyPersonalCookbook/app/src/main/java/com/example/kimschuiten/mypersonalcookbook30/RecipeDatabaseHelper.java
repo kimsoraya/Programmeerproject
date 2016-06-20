@@ -20,7 +20,6 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + RecipeContract.NewRecipeInfo.TABLE_NAME + "(" +
                     RecipeContract.NewRecipeInfo.RECIPE_TEXT + " TEXT," +
                     RecipeContract.NewRecipeInfo.RECIPE_TITLE + " TEXT," +
-                    RecipeContract.NewRecipeInfo.RECIPE_CATEGORY + " TEXT," +
                     RecipeContract.NewRecipeInfo.RECIPE_PHOTO_STYLE + " TEXT," +
                     RecipeContract.NewRecipeInfo.RECIPE_PHOTO + " TEXT);";
 
@@ -42,12 +41,11 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
     /*
     Define a method for inserting the data
      */
-    public void addRecipeInfo(String text, String title, String category, String photo, SQLiteDatabase db){
+    public void addRecipeInfo(String text, String title, String photo, SQLiteDatabase db){
         // Create object of contentValues to create map values
         ContentValues contentValues = new ContentValues();
         // Specify key and the data
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TITLE, title);
-        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_CATEGORY, category);
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_PHOTO, photo);
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TEXT, text);
 /*
@@ -63,12 +61,11 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
     /*
    Define a method for inserting data without a dish picture
     */
-    public void addRecipeInfoTwo(String text, String title, String category, SQLiteDatabase db){
+    public void addRecipeInfoTwo(String text, String title, SQLiteDatabase db){
         // Create object of contentValues to create map values
         ContentValues contentValues = new ContentValues();
         // Specify key and the data
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TITLE, title);
-        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_CATEGORY, category);
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TEXT, text);
 
         // Put all this information in the database
@@ -78,12 +75,11 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
     /*
   Define a method for inserting the data with photo recipe
    */
-    public void addPhotoRecipeInfo(String recipePhoto, String title, String category, String photo, SQLiteDatabase db){
+    public void addPhotoRecipeInfo(String recipePhoto, String title, String photo, SQLiteDatabase db){
         // Create object of contentValues to create map values
         ContentValues contentValues = new ContentValues();
         // Specify key and the data
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TITLE, title);
-        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_CATEGORY, category);
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_PHOTO, photo);
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TEXT, recipePhoto);
 
@@ -140,7 +136,6 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public String getRecipeText(String recipeTitle, SQLiteDatabase db){
-
         Cursor secondCursor;
 
         String selectQuery = "SELECT text FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME +

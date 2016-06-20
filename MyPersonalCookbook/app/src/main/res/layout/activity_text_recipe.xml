@@ -20,20 +20,20 @@
         android:layout_marginBottom="1dp"
         android:background="#fae5d1"/>
 
-    <EditText
+   <!-- <EditText
         android:layout_width="350dp"
         android:layout_height="30dp"
         android:layout_marginBottom="1dp"
         android:id="@+id/categoryEditText"
         android:hint="@string/categorieEditText"
         android:layout_below="@+id/titleEditText"
-        android:background="#fae5d1"/>
+        android:background="#fae5d1"/>-->
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/categoryEditText"
-        android:id="@+id/recipePhotoImageView"/>
+        android:layout_below="@+id/titleEditText"
+        android:id="@+id/recipePhotoImageView" />
 
     <EditText
         android:layout_width="350dp"

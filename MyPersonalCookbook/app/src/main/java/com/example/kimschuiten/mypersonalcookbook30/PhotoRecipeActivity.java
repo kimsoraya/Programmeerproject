@@ -48,7 +48,9 @@ public class PhotoRecipeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_photo_recipe);
 
         photoTitleEditText = (EditText) findViewById(R.id.titleEditText2);
+/*
         photoCategoryEditText = (EditText) findViewById(R.id.categoryEditText2);
+*/
         takePhotoButton = (Button) findViewById(R.id.takePhoto);
         recipeImageView = (ImageView) findViewById(R.id.recipePictureImageView);
         extraPictureButton = (ImageView) findViewById(R.id.addExtraPictureButton);
@@ -57,10 +59,9 @@ public class PhotoRecipeActivity extends AppCompatActivity {
         Intent photoIntent = getIntent();
     }
 
-
-    /*
- Open pop up menu to choose between photo or picture gallery
-  */
+    /**
+     * Open pop up menu to choose between photo or picture gallery
+    **/
     public void onAddPictureClick(View view) {
         PopupMenu popupMenu = new PopupMenu(context, view);
         popupMenu.inflate(R.menu.picture_menu);
@@ -177,8 +178,11 @@ public class PhotoRecipeActivity extends AppCompatActivity {
     public void saveRecipeButtonClick(View view){
         // Get the information from the EditTexts
         String title = photoTitleEditText.getText().toString();
+/*
         String category = photoCategoryEditText.getText().toString();
+*/
         String photoRecipe = String.valueOf(Uri.parse(mCurrentPhotoPath));
+
         // Get the path of the photo as a String
         String photo = String.valueOf(Uri.parse(mDishPicturePath));
 
@@ -187,7 +191,7 @@ public class PhotoRecipeActivity extends AppCompatActivity {
         sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
 
         // Perform database insertion
-        recipeDatabaseHelper.addPhotoRecipeInfo(photoRecipe, title, category, photo, sqLiteDatabase);
+        recipeDatabaseHelper.addPhotoRecipeInfo(photoRecipe, title, photo, sqLiteDatabase);
 
         // Close the database
         Toast.makeText(getBaseContext(), "Recipe Saved!", Toast.LENGTH_SHORT).show();
@@ -196,7 +200,7 @@ public class PhotoRecipeActivity extends AppCompatActivity {
 
     public void takePhotoClick(View view) {
         PopupMenu popupMenu = new PopupMenu(context, view);
-        popupMenu.inflate(R.menu.picture_menu);
+        popupMenu.inflate(R.menu.gallery_menu);
         popupMenu.show();
 
         // Set onclicklistener for the two options
