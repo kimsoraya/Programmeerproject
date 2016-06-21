@@ -1,5 +1,5 @@
 # day 1
-Wrote a project proposal. I found an app that is very close to my app, so I had to find a way to make my app stand out. I did this not by making an even more complicated app, but going back to the basics, making a simple and easy to use app. Without comercials. The app will basically have two functions. View your cookbook and add reciped by writing a recipe or take a picture of a recipe. 
+Project proposal geschreven. Ik vond een app die heel erg op die van mij lijkt, dus ik moest een manier vinden waarmee mijn app echt anders werd. Uiteindelijk besloot ik dat mijn app anders wordt in de zin dat hij simpeler is in plaats van nog ingewikkelder. Zo is de app makkelijk in gebruik, en heb je ook geen last van reclames. De app zal in de basis twee functies hebben, je kookboek bekijken en een recept maken aan de hand van tekst of een afbeelding. 
 
 # dag 2
 Begonnen aan Design Document door een UML diagram te maken. Wat ik vooral tegenkwam was de manier waarop ik de database moet gaan implementeren. Ik wil in ieder geval beginnen met de sqlite database omdat ik hier al ervaring mee heb. Wat een mogelijk probleem kan worden is dat de hoeveelheid afbeeldingen niet in deze database passen. Later zal ik gaan kijken naar een online database. Waar ik ook over moet gaan nadenken is hoe ik de foto app lanceer binnen mijn app. Hier maak ik me echter minder zorgen om, omdat dit een functie is die veel apps hebben en het zal daarom minder moeilijk zijn om uit te zoeken. 
@@ -23,14 +23,14 @@ In principe staat het skelet voor mijn sqlite database. Voordat ik hem kan teste
 # dag 8
 Gisteren heb ik zo veel code verandert in een poging tot het toevoegen van de foto's aan mijn database, dat het een enorm zooitje is geworden en ik niet meer wist waar ik mee bezig was. Daarom vandaag terug gegaan naar de staat waarin alles nog wel werkte en "opnieuw" begonnen. 
 
-Foto path is inmiddels niet langer gehardcode, maar elke foto heeft een timestamp als naam. 
-Het lijkt erop dat het ook is gelukt om de foto path in de sqlite database te stoppen. 
-Begonnen aan het ophalen van de informatie (foto + titel) in de CategoryActivity.
+- Foto path is inmiddels niet langer gehardcode, maar elke foto heeft een timestamp als naam. 
+- Het lijkt erop dat het ook is gelukt om de foto path in de sqlite database te stoppen. 
+- Begonnen aan het ophalen van de informatie (foto + titel) in de CategoryActivity.
 
 # dag 9
-Ik heb vandaag geprobeerd mijn database volledig werkend te krijgen en in mijn category activity al de informatie uit de database op te halen. 
-Het is me gelukt om titels uit de database op te halen en in de listview te laten zien. Alleen zijn de bijbehorende foto's nu nog de gehardcode foto van paella die ik er ooit hebt ingezet. 
-Je kan ook al klikken op de recepttitels om het recept te bekijken, deze activity is verder alleen nog leeg.
+- Ik heb vandaag geprobeerd mijn database volledig werkend te krijgen en in mijn category activity al de informatie uit de database op te halen. 
+- Het is me gelukt om titels uit de database op te halen en in de listview te laten zien. Alleen zijn de bijbehorende foto's nu nog de gehardcode foto van paella die ik er ooit hebt ingezet. 
+- Je kan ook al klikken op de recepttitels om het recept te bekijken, deze activity is verder alleen nog leeg.
 
 #dag 10
 Recipe adapter en recipe data provider aangepast aan foto path content. Geprobeerd om de photopath om te zetten in Bitmap zodat ze te zien zijn in de recepten listview. Werkt nog niet. 
@@ -39,28 +39,33 @@ Recipe adapter en recipe data provider aangepast aan foto path content. Geprobee
 Als je op de titel klikt in de titel listview wordt er een nieuwe activity geopend waarin de titel nog een keer gedisplayed wordt. Hieronder zal dan de tekst van het recept komen. 
 
 #dag 12
-Gisteren is het me gelukt om in de show recipe activity in ieder geval al de titel van het recept te laten zien. Ik kwam er vandaag alleen wel achter dat hij de verkeerde titel weergeeft. 
-Ondertussen heb ik wel een nieuwe method aangemaakt in mijn Databasehelper met een query voor het ophalen van de tekst die bij de titel hoort. De query lijkt te werken, maar omdat de verkeerde titel wordt opgehaald kan er niet een bijbehorende tekst worden gevonden. 
-Spinner toegevoegd met hard coded categories.
+- Gisteren is het me gelukt om in de show recipe activity in ieder geval al de titel van het recept te laten zien. Ik kwam er vandaag alleen wel achter dat hij de verkeerde titel weergeeft. 
+- Ondertussen heb ik wel een nieuwe method aangemaakt in mijn Databasehelper met een query voor het ophalen van de tekst die bij de titel hoort. De query lijkt te werken, maar omdat de verkeerde titel wordt opgehaald kan er niet een bijbehorende tekst worden gevonden. 
+- Spinner toegevoegd met hard coded categories.
 
 #dag 13
-Spinner haalt content op uit database, maar om de een of andere reden laat hij de photo paths zien in plaats van de categorieen. 
-Dit bleek fout te gaan in het aanmaken van de recepten. Ik had de informatie in de verkeerde volgorde gelaad, waardoor de informatie in de verkeerde kolommen terecht kwam. Wanneer ik het hele recept wil bekijken gaat het echter alsnog mis, ik krijg de verkeerde titel te zien en de query werkt niet. 
-Popupmenu toegevoegd in het aanmaken van een recept zodat de user ook een image uit de gallery kan kiezen. Hierdoor slaat hij alleen niet meer de image die met de camere wordt gemaakt.
-De query in mijn getRecipeText werkt nu ook eindelijk. Alleen haalt hij dus de verkeerde tekst op. 
-In de recepttitel listview staat nu wel eindelijk een foto! Maar dat lijkt alleen te werken met afbeeldingen die uit de gallery komen. 
+- Spinner haalt content op uit database, maar om de een of andere reden laat hij de photo paths zien in plaats van de categorieen. 
+- Dit bleek fout te gaan in het aanmaken van de recepten. Ik had de informatie in de verkeerde volgorde gelaad, waardoor de informatie in de verkeerde kolommen terecht kwam. Wanneer ik het hele recept wil bekijken gaat het echter alsnog mis, ik krijg de verkeerde titel te zien en de query werkt niet.
+- Popupmenu toegevoegd in het aanmaken van een recept zodat de user ook een image uit de gallery kan kiezen. Hierdoor slaat hij alleen niet meer de image die met de camere wordt gemaakt.
+- De query in mijn getRecipeText werkt nu ook eindelijk. Alleen haalt hij dus de verkeerde tekst op. 
+- In de recepttitel listview staat nu wel eindelijk een foto! Maar dat lijkt alleen te werken met afbeeldingen die uit de gallery komen. 
 
 #dag 14
-Out of memory error verholpen door mijn Bitmap method aan te passen. 
-In de listview kunnen nu recepten met en zonder plaatje staan.
-Je kan nu een foto en een gallery image toevoegen aan een recipt. Alleen komen alle images niet meer in de listview. 
-Gallery images zijn wel weer te zien in de listview. Alleen de zelfgemaakte foto's niet. 
-De save button blijft nu altijd zichtbaar als je een extra foto toevoegt. 
-Het pop up menu van de take photo button werkt. De beelden worden nu alleen nog wel in de image view van de extra image geladen. 
-Ik kan nu twee foto's uploaden in de foto recipe activity.
+- Out of memory error verholpen door mijn Bitmap method aan te passen. 
+- In de listview kunnen nu recepten met en zonder plaatje staan.
+- Je kan nu een foto en een gallery image toevoegen aan een recipt. Alleen komen alle images niet meer in de listview. 
+- Gallery images zijn wel weer te zien in de listview. Alleen de zelfgemaakte foto's niet. 
+- De save button blijft nu altijd zichtbaar als je een extra foto toevoegt. 
+- Het pop up menu van de take photo button werkt. De beelden worden nu alleen nog wel in de image view van de extra image geladen. 
+- Ik kan nu twee foto's uploaden in de foto recipe activity.
+
+#dag 15
+- Als er op een titel in de listview wordt geklikt wordt nu het juiste recept opgehaald. 
+- In make photo recipe krijg ik niet meer zomaar de toast "you haven't picked an image".
+- App crasht niet meer als ik een photo recipe op wil slaan zonder disch picture. 
 
 
 Wat staat er verder nog op mijn to do:
+- Kan geen dish picture meer toevoegen, toast: something went wrong. 
 - Ophalen van foto's uit sqlite met photo path en image view stoppen van category activity.
-- Zorgen dat als er op een recept wordt geklikt de user het recept in juiste weergave ziet. Dit betekend bovenaan de (juiste) titel en daaronder de uitleg in tekst of foto-vorm. 
-
+- Als er een foto recept wordt opgehaald moet deze ook daadwerkelijk de afbeelding laten zien, niet alleen de foto path. 
