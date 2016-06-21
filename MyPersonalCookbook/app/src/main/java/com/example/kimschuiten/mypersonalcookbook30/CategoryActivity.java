@@ -94,7 +94,7 @@ public class CategoryActivity extends AppCompatActivity {
                 sqLiteDatabase = recipeDatabaseHelper.getReadableDatabase();
 
                 // Get the index of the title in the database, use it to get the text/photo text
-                String index = ((TextView) findViewById(R.id.recipeTitle)).getText().toString();
+                String index = ((TextView) view.findViewById(R.id.recipeTitle)).getText().toString();
                 String text = recipeDatabaseHelper.getRecipeText(index, sqLiteDatabase);
 /*
                 String photoPath = recipeDatabaseHelper.getRecipePhotoText(index, sqLiteDatabase);
