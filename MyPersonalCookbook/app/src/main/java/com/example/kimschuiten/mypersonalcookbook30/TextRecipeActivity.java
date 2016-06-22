@@ -1,20 +1,20 @@
 package com.example.kimschuiten.mypersonalcookbook30;
 
-import android.app.Activity;
+/**
+ * User can create a recipe by writing a title and a recipe text. It is also possible to add a
+ * picture of your dish. This picture will be displayed in the recipe list next to the title.
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,17 +24,13 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TextRecipeActivity extends AppCompatActivity {
 
     EditText textTitleEditText;
-    EditText textCategoryEditText;
     EditText textTextEditText;
     Button saveRecipeButton;
     ImageView showPhotoImageView;
@@ -53,9 +49,6 @@ public class TextRecipeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_text_recipe);
 
         textTitleEditText = (EditText) findViewById(R.id.titleEditText);
-/*
-        textCategoryEditText = (EditText) findViewById(R.id.categoryEditText);
-*/
         textTextEditText = (EditText) findViewById(R.id.recipeText);
         saveRecipeButton = (Button) findViewById(R.id.saveButton);
         showPhotoImageView = (ImageView) findViewById(R.id.recipePhotoImageView);
@@ -138,11 +131,11 @@ public class TextRecipeActivity extends AppCompatActivity {
                 showPhotoImageView.setImageURI(Uri.parse(mCurrentPhotoPath));
 
             } else{
-                Toast.makeText(this, "You haven't picked an Image",
+                Toast.makeText(this, R.string.no_image,
                         Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
+            Toast.makeText(this, R.string.something_wrong, Toast.LENGTH_LONG)
                     .show();
         }
     }
@@ -155,28 +148,24 @@ public class TextRecipeActivity extends AppCompatActivity {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES);
+        File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
         // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        mCurrentPhotoPath = image.getAbsolutePath();
         Log.e("PHOTO PATH1", mCurrentPhotoPath);
 
         return image;
     }
     /**
-      * Save title, category en text to Recipe Object
+      * Save title, category en text to sqlite database
      **/
     public void saveRecipeButtonClick(View view){
         // Get the information from the EditTexts
         String title = textTitleEditText.getText().toString();
-/*
-        String category = textCategoryEditText.getText().toString();
-*/
         String text = textTextEditText.getText().toString();
 
         if (mCurrentPhotoPath != null){
@@ -199,10 +188,18 @@ public class TextRecipeActivity extends AppCompatActivity {
             recipeDatabaseHelper.addRecipeInfoTwo(text, title, sqLiteDatabase);
         }
         // Close the database
-        Toast.makeText(getBaseContext(), "Recipe Saved!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), R.string.recipe_saved, Toast.LENGTH_SHORT).show();
         recipeDatabaseHelper.close();
+
+        // Empty the fields
+        textTitleEditText.setText("");
+        textTextEditText.setText("");
+        showPhotoImageView.setImageResource(0);
     }
 
+    /**
+     * Go back to main activity
+     */
     public void HomeButtonClick(View view) {
         // Go back to main screen
         Intent mainIntent = new Intent(this, MainActivity.class);

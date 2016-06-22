@@ -18,7 +18,8 @@ import java.util.List;
 import javax.sql.DataSource;
 
 /**
- * Created by kimschuiten on 03-06-16.
+ * Custom recipe adapter for the recipe list view. Needs an image (the extra image that is
+ * displayed in the listview) and the recipe title.
  */
 public class RecipeAdapter extends ArrayAdapter {
     List list = new ArrayList();
@@ -32,9 +33,8 @@ public class RecipeAdapter extends ArrayAdapter {
         TextView title;
     }
 
-
-    /*
-     *Save recipe objects in an array list
+    /**
+     * Save recipe objects in an array list
      */
     @Override
     public void add(Object object) {
@@ -47,7 +47,7 @@ public class RecipeAdapter extends ArrayAdapter {
         return list.size();
     }
 
-   /*
+   /**
     * Method to return each item in the row
     */
     @Override
@@ -55,7 +55,7 @@ public class RecipeAdapter extends ArrayAdapter {
         return list.get(position);
     }
 
-    /*
+    /**
      * A method that will return each row of data
      */
     @Override

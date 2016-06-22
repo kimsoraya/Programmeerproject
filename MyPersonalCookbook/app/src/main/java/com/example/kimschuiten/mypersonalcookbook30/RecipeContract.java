@@ -12,7 +12,6 @@ public class RecipeContract {
     public static abstract class NewRecipeInfo {
         // column names
         public static final String RECIPE_TITLE = "title";
-        public static final String RECIPE_CATEGORY = "category";
         public static final String RECIPE_PHOTO = "photo";
         public static final String RECIPE_TEXT = "text";
         public static final String RECIPE_PHOTO_STYLE = "photo_recipe";

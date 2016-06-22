@@ -1,6 +1,10 @@
 package com.example.kimschuiten.mypersonalcookbook30;
 
-
+/**
+ * User gets to create a Photo Recipe. A photo can be taken with the camere or choosen from the gallery.
+ * It is also possible to add an extra image (just like you can in the Text Recipe) which will be
+ * displayed in the recipe listview.
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -28,7 +32,6 @@ import java.util.Date;
 public class PhotoRecipeActivity extends AppCompatActivity {
 
     EditText photoTitleEditText;
-    EditText photoCategoryEditText;
     Button takePhotoButton;
     ImageView extraPictureButton;
     ImageView recipeImageView;
@@ -50,9 +53,6 @@ public class PhotoRecipeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_photo_recipe);
 
         photoTitleEditText = (EditText) findViewById(R.id.titleEditText2);
-/*
-        photoCategoryEditText = (EditText) findViewById(R.id.categoryEditText2);
-*/
         takePhotoButton = (Button) findViewById(R.id.takePhoto);
         recipeImageView = (ImageView) findViewById(R.id.recipePictureImageView);
         extraPictureButton = (ImageView) findViewById(R.id.addExtraPictureButton);
@@ -66,6 +66,7 @@ public class PhotoRecipeActivity extends AppCompatActivity {
      * Open pop up menu to choose between photo or picture gallery.
     **/
     public void onAddPictureClick(View view) {
+        // Create popup menu
         PopupMenu popupMenu = new PopupMenu(context, view);
         popupMenu.inflate(R.menu.picture_menu);
         popupMenu.show();
@@ -127,22 +128,18 @@ public class PhotoRecipeActivity extends AppCompatActivity {
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 mDishPicturePath = cursor.getString(columnIndex);
                 cursor.close();
+
                 // Set the Image in ImageView after decoding the String
                 extraPictureImageView.setImageBitmap(BitmapFactory
                         .decodeFile(mDishPicturePath));
             }
-            // When a photo is taked with the camera
+            // When a photo is taken with the camera
             else if (requestCode == CAM_REQUEST && resultCode == RESULT_OK) {
                 // Get the image and put it in the ImageView
                 extraPictureImageView.setImageURI(Uri.parse(mDishPicturePath));
-
-            } else{
-                Toast.makeText(this, "You haven't picked an Image",
-                        Toast.LENGTH_LONG).show();
             }
-
             // When an Image is picked
-            if (requestCode == RESULT_LOAD_IMG2 && resultCode == RESULT_OK
+            else if (requestCode == RESULT_LOAD_IMG2 && resultCode == RESULT_OK
                     && null != data) {
                 // Get the Image from data
                 Uri selectedImage = data.getData();
@@ -157,25 +154,31 @@ public class PhotoRecipeActivity extends AppCompatActivity {
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 mCurrentPhotoPath = cursor.getString(columnIndex);
                 cursor.close();
+
                 // Set the Image in ImageView after decoding the String
                 recipeImageView.setImageBitmap(BitmapFactory
                         .decodeFile(mCurrentPhotoPath));
             }
-            // When a photo is taked with the camera
+            // When a photo is taken with the camera
             else if (requestCode == CAM_REQUEST2 && resultCode == RESULT_OK) {
                 // Get the image and put it in the ImageView
                 recipeImageView.setImageURI(Uri.parse(mCurrentPhotoPath));
 
             } else{
-                Toast.makeText(this, "You haven't picked an Image",
+                Toast.makeText(this, R.string.no_image,
                         Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
+            Toast.makeText(this, R.string.something_wrong, Toast.LENGTH_LONG)
                     .show();
+            System.out.println(e.getClass());
         }
     }
 
+    /**
+     * User gets to take an image of his recipe text. User can choose between an image from the
+     * gallery or take a photo
+     **/
     public void takePhotoClick(View view) {
         PopupMenu popupMenu = new PopupMenu(context, view);
         popupMenu.inflate(R.menu.gallery_menu);
@@ -236,7 +239,7 @@ public class PhotoRecipeActivity extends AppCompatActivity {
         );
 
         // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        mCurrentPhotoPath = image.getAbsolutePath();
         Log.e("PHOTO PATH1", mCurrentPhotoPath);
 
         return image;
@@ -244,32 +247,47 @@ public class PhotoRecipeActivity extends AppCompatActivity {
 
 
     /**
-     * Save title, category en text to Recipe Object
+     * Save title, category en text to sqlite database
      **/
     public void saveRecipeButtonClick(View view){
-        // Get the information from the EditTexts
-        String title = photoTitleEditText.getText().toString();
-/*
-        String category = photoCategoryEditText.getText().toString();
-*/
-        String photoRecipe = String.valueOf(Uri.parse(mCurrentPhotoPath));
-
-        // Get the path of the photo as a String
-        String photo = String.valueOf(Uri.parse(mDishPicturePath));
-
         // Initialize recipe db object + sqlitedatabase object
         recipeDatabaseHelper = new RecipeDatabaseHelper(context);
         sqLiteDatabase = recipeDatabaseHelper.getWritableDatabase();
 
-        // Perform database insertion
-        recipeDatabaseHelper.addPhotoRecipeInfo(photoRecipe, title, photo, sqLiteDatabase);
+       if (mDishPicturePath != null) {
+           // Get the information from the EditTexts
+           String title = photoTitleEditText.getText().toString();
+           String photoRecipe = String.valueOf(Uri.parse(mCurrentPhotoPath));
 
+           // Get the path of the dish photo as a String
+           String photo = String.valueOf(Uri.parse(mDishPicturePath));
+
+           // Perform database insertion
+           recipeDatabaseHelper.addPhotoRecipeInfo(photoRecipe, title, photo, sqLiteDatabase);
+
+       } else{
+           // Get the information from the EditTexts
+           String title = photoTitleEditText.getText().toString();
+           String photoRecipe = String.valueOf(Uri.parse(mCurrentPhotoPath));
+
+           // Perform database insertion
+           recipeDatabaseHelper.addPhotoRecipeInfoTwo(photoRecipe, title, sqLiteDatabase);
+           Log.d("DATABASE INSERTION 2", photoRecipe);
+
+       }
         // Close the database
-        Toast.makeText(getBaseContext(), "Recipe Saved!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), R.string.recipe_saved, Toast.LENGTH_SHORT).show();
         recipeDatabaseHelper.close();
+
+        // Clear the fields
+        photoTitleEditText.setText("");
+        recipeImageView.setImageResource(0);
+        extraPictureImageView.setImageResource(0);
     }
 
-
+    /**
+     * Go back to main activity
+     */
     public void HomeButtonClick(View view) {
         // Go back to main screen
         Intent mainIntent = new Intent(this, MainActivity.class);

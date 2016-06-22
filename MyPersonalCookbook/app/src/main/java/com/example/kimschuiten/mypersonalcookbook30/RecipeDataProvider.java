@@ -3,7 +3,7 @@ package com.example.kimschuiten.mypersonalcookbook30;
 import android.graphics.Bitmap;
 
 /**
- * Created by kimschuiten on 03-06-16.
+ * Recipe object to provide the data needed for the custom recipe adapter
  */
 public class RecipeDataProvider {
     private Bitmap recipeImageResource;
@@ -27,13 +27,6 @@ public class RecipeDataProvider {
 
     // Constructor
     public RecipeDataProvider(Bitmap recipeImageResource, String recipeTitles){
-    /*    if(recipeImageResource == null){
-            this.recipeTitles = recipeTitles;
-        }
-        else {
-            this.recipeTitles = recipeTitles;
-            this.recipeImageResource = recipeImageResource;
-        }*/
         this.recipeTitles = recipeTitles;
         this.recipeImageResource = recipeImageResource;
     }

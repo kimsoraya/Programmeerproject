@@ -5,10 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
 import android.util.Log;
-
-import java.util.ArrayList;
 
 /**
  * Class for the database operations
@@ -81,13 +78,28 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         // Specify key and the data
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TITLE, title);
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_PHOTO, photo);
-        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TEXT, recipePhoto);
+        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_PHOTO_STYLE, recipePhoto);
 
         // Put all this information in the database
         db.insert(RecipeContract.NewRecipeInfo.TABLE_NAME, null, contentValues);
         Log.e("DATABASE OPERATIONS", "One row is inserted");
     }
 
+    /**
+    * Define a method for inserting the data with photo recipe
+    * Without Dish picture
+    **/
+    public void addPhotoRecipeInfoTwo(String recipePhoto, String title, SQLiteDatabase db){
+        // Create object of contentValues to create map values
+        ContentValues contentValues = new ContentValues();
+        // Specify key and the data
+        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TITLE, title);
+        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_PHOTO_STYLE, recipePhoto);
+
+        // Put all this information in the database
+        db.insert(RecipeContract.NewRecipeInfo.TABLE_NAME, null, contentValues);
+        Log.e("DATABASE OPERATIONS", "One row is inserted");
+    }
 
     public Cursor getRecipeInfo(SQLiteDatabase db){
         // Create object of Cursor
@@ -102,36 +114,21 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-/*    *//*
-    Get recipe info without dish image
-     *//*
-    public Cursor getRecipeInfoSimple(SQLiteDatabase db){
-        // Create object of Cursor
-        Cursor cursor;
-
-        // Create some projections: the needed column names.
-        String[] projections = {RecipeContract.NewRecipeInfo.RECIPE_TITLE};
-
-        cursor = db.query(RecipeContract.NewRecipeInfo.TABLE_NAME, projections, null, null, null, null, null);
-
-        return cursor;
-    }*/
-
     public String getRecipePhotoText(String photoRecipeTitle, SQLiteDatabase db){
         Cursor fourthCursor;
 
         String selectQuery = "SELECT photo_recipe FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME +
-                " WHERE " + RecipeContract.NewRecipeInfo.RECIPE_PHOTO_STYLE + " = \"" + photoRecipeTitle
-                + "\"";
+                " WHERE " + RecipeContract.NewRecipeInfo.RECIPE_TITLE + " = '" + photoRecipeTitle
+                + "'";
 
         fourthCursor = db.rawQuery(selectQuery, null);
-        if (fourthCursor != null){
-            fourthCursor.moveToFirst();
+        String recipePhoto = null;
+        if (fourthCursor.moveToFirst()) {
+            recipePhoto = fourthCursor.getString(fourthCursor.getColumnIndexOrThrow
+                    (RecipeContract.NewRecipeInfo.RECIPE_PHOTO_STYLE));
+
+            fourthCursor.close();
         }
-
-        String recipePhoto = fourthCursor.getString(fourthCursor.getColumnIndexOrThrow(RecipeContract.
-                NewRecipeInfo.RECIPE_PHOTO_STYLE));
-
         return recipePhoto;
     }
 
@@ -152,28 +149,17 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         return recipeText;
     }
 
-    public String[] getCategories(SQLiteDatabase db){
-        // Create object of Cursor
-        Cursor thirdCursor;
+    public void deleteTitle(String recipeTitle, SQLiteDatabase db) {
+        Cursor fifthCursor;
 
-        String selectCategoryQuery = "SELECT category FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME;
+        String deleteQuery = "DELETE FROM " + RecipeContract.NewRecipeInfo.TABLE_NAME + " WHERE " +
+                RecipeContract.NewRecipeInfo.RECIPE_TITLE + " = \"" + recipeTitle + "\"";
 
-        thirdCursor = db.rawQuery(selectCategoryQuery, null);
-        ArrayList<String> spinnerContent = new ArrayList<String>();
-        if(thirdCursor.moveToFirst()) {
-            do {
-                String word = thirdCursor.getString(thirdCursor.getColumnIndexOrThrow("category"));
-                spinnerContent.add(word);
-            } while (thirdCursor.moveToNext());
+        fifthCursor = db.rawQuery(deleteQuery, null);
+        if(fifthCursor != null){
+            fifthCursor.moveToFirst();
         }
-        thirdCursor.close();
-
-        String[] allSpinner = new String[spinnerContent.size()];
-        allSpinner = spinnerContent.toArray(allSpinner);
-
-        return allSpinner;
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
