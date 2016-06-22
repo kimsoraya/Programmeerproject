@@ -88,7 +88,7 @@ public class RecipeListActivity extends AppCompatActivity implements AdapterView
                     if (imagePath != null) {
                         // Get the titles and image paths from the database
                         RecipeDataProvider recipeDataProvider = new RecipeDataProvider(convertSrcToBitmap(imagePath), titles);
-                        Log.d("imagepath", imagePath);
+
                         // Add them to the listview
                         adapter.add(recipeDataProvider);
                     } else {

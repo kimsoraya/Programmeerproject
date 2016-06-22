@@ -35,8 +35,8 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         Log.e("DATABASE OPERATIONS", "Table created");
     }
 
-    /*
-    Define a method for inserting the data
+    /**
+     * Define a method for inserting the data
      */
     public void addRecipeInfo(String text, String title, String photo, SQLiteDatabase db){
         // Create object of contentValues to create map values
@@ -45,9 +45,6 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TITLE, title);
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_PHOTO, photo);
         contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_TEXT, text);
-/*
-        contentValues.put(RecipeContract.NewRecipeInfo.RECIPE_PHOTO_STYLE, recipe_photo);
-*/
 
         // Put all this information in the database
         db.insert(RecipeContract.NewRecipeInfo.TABLE_NAME, null, contentValues);
@@ -55,9 +52,9 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    /*
-   Define a method for inserting data without a dish picture
-    */
+    /**
+     * Define a method for inserting data without a dish picture
+    **/
     public void addRecipeInfoTwo(String text, String title, SQLiteDatabase db){
         // Create object of contentValues to create map values
         ContentValues contentValues = new ContentValues();
@@ -69,9 +66,9 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         db.insert(RecipeContract.NewRecipeInfo.TABLE_NAME, null, contentValues);
         Log.e("DATABASE OPERATIONS", "One row is inserted");
     }
-    /*
-  Define a method for inserting the data with photo recipe
-   */
+    /**
+     * Define a method for inserting the data with photo recipe
+     */
     public void addPhotoRecipeInfo(String recipePhoto, String title, String photo, SQLiteDatabase db){
         // Create object of contentValues to create map values
         ContentValues contentValues = new ContentValues();
@@ -101,6 +98,9 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         Log.e("DATABASE OPERATIONS", "One row is inserted");
     }
 
+    /**
+     * Create a cursor to return the recipe titles and their images to the recipe listview.
+     */
     public Cursor getRecipeInfo(SQLiteDatabase db){
         // Create object of Cursor
         Cursor cursor;
@@ -114,6 +114,9 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    /**
+     * This method is called when the user wants to view a photo recipe.
+     */
     public String getRecipePhotoText(String photoRecipeTitle, SQLiteDatabase db){
         Cursor fourthCursor;
 
@@ -132,6 +135,9 @@ public class RecipeDatabaseHelper extends SQLiteOpenHelper {
         return recipePhoto;
     }
 
+    /**
+     * This method is called when the user wants to view a text recipe.
+     */
     public String getRecipeText(String recipeTitle, SQLiteDatabase db){
         Cursor secondCursor;
 

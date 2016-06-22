@@ -31,41 +31,23 @@
         android:layout_alignParentRight="true"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:id="@+id/recipePictureImageView"
-        android:layout_below="@+id/titleEditText"
-        android:layout_above="@+id/takePhoto"
-        android:paddingTop="20dp"/>
-  <!--  <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_picture_button"
-        android:id="@+id/addExtraPictureButton"
-        android:onClick="onAddPictureClick"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:background="#b34708"
-        android:textColor="#faf6f6"/>-->
-
-   <!-- <EditText
-        android:layout_width="350dp"
-        android:layout_height="30dp"
-        android:id="@+id/categoryEditText2"
-        android:hint="@string/categorieEditText"
-        android:layout_below="@+id/titleEditText2"
-        android:background="#fae5d1"/>-->
+        android:paddingTop="20dp"
+        android:layout_above="@+id/saveButton"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:text="@string/takePhotoButton"
         android:id="@+id/takePhoto"
         android:onClick="takePhotoClick"
         android:background="#b34708"
-        android:textColor="#faf6f6"/>
+        android:textColor="#faf6f6"
+        android:layout_below="@+id/titleEditText2"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -79,11 +61,12 @@
         android:textColor="#faf6f6"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="200dp"
         android:id="@+id/showExtraPicture"
-        android:layout_below="@+id/takePhoto"
-        android:layout_above="@+id/saveButton"/>
+        android:layout_below="@+id/addExtraPictureButton"
+        android:layout_toEndOf="@+id/takePhoto"
+        android:layout_above="@+id/recipePictureImageView" />
 
 
     <Button

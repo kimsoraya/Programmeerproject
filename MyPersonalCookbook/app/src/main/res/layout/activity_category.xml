@@ -10,13 +10,6 @@
     android:background="#fddca6"
     tools:context="com.example.kimschuiten.mypersonalcookbook30.CategoryActivity">
 
-
-    <!--<TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/viewTitles"
-        android:id="@+id/recipeList" />-->
-
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

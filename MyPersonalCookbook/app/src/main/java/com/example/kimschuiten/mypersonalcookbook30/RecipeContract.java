@@ -6,9 +6,9 @@ package com.example.kimschuiten.mypersonalcookbook30;
  */
 public class RecipeContract {
 
-    /*
-  Define needed constants
-   */
+    /**
+     * Define needed constants
+     **/
     public static abstract class NewRecipeInfo {
         // column names
         public static final String RECIPE_TITLE = "title";

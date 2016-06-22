@@ -18,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     Button viewMenu;
     ImageView addRecipe;
-
-    private ArrayAdapter<String> listAdapter;
     SQLiteDatabase sqLiteDatabase;
 
     @Override
@@ -37,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *onClickListener to show the menu options
+     * onClickListener to show the menu options
     **/
     public void menuButtonClick(View view) {
         // Open new activity with all the recipe items
