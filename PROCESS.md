@@ -63,9 +63,16 @@ Als je op de titel klikt in de titel listview wordt er een nieuwe activity geope
 - Als er op een titel in de listview wordt geklikt wordt nu het juiste recept opgehaald. 
 - In make photo recipe krijg ik niet meer zomaar de toast "you haven't picked an image".
 - App crasht niet meer als ik een photo recipe op wil slaan zonder disch picture. 
+- Ik heb "take photo" veranderd naar "Select an Image".
+
+#dag 16
+- App crasht niet meer als ik een photo recipe wil bekijken. Maar hij laat ook nog steeds de foto niet zien. 
+- Invulvelden leeg als je op save recipe hebt geklikt. 
+- Deleten van recepten werkt, alleen wordt de listview dan niet meteen geupdate. Je moet eerst het scherm uit en dan weer in om te zien dat het gedelete is. 
+- Zelf genomen foto's worden nu ook opgehaald in de recipe listview. 
+- Als er een foto recept wordt opgehaald, wordt er ook echt een foto laten zien. 
 
 
 Wat staat er verder nog op mijn to do:
-- Kan geen dish picture meer toevoegen, toast: something went wrong. 
-- Ophalen van foto's uit sqlite met photo path en image view stoppen van category activity.
-- Als er een foto recept wordt opgehaald moet deze ook daadwerkelijk de afbeelding laten zien, niet alleen de foto path. 
+- delete functie moet goed werken
+- ik krijg nog een "something went wrong" als ik een extra foto met de camera wil nemen in photo recipe
