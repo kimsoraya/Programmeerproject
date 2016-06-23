@@ -6,15 +6,15 @@
 **Naam: Schuiten<br>
 Studentnummer: 10191089**
 
-*In de app My Personal Cookbook kan je recepten aanmaken en bewaren zodat je nooit meer je favoriete recepten kwijt kan raken. Als je een recept wil toevoegen kan je dit intypen, of een foto maken van een recept uit je favoriete kookboek. Daarnaast kan je aan elk recept een foto toevoegen van het resultaat.*
-<img src="doc/Schermafbeelding 2016-06-23 om 13.44.10.png"></img>
-<img src="doc/Schermafbeelding 2016-06-23 om 13.44.34.png"></img>
-<img src="doc/Schermafbeelding 2016-06-23 om 14.06.46.png"></img>
-<img src="doc/Schermafbeelding 2016-06-23 om 14.07.06.png"></img>
-<img src="doc/Screenshot_2016-06-23-13-36-53.png"></img>
-<img src="doc/Screenshot_2016-06-23-13-37-08.png"></img>
-<img src="doc/Screenshot_2016-06-23-13-37-15.png"></img>
-<img src="doc/Screenshot_2016-06-23-13-38-12.png"></img>
+*In de app My Personal Cookbook kan je recepten aanmaken en bewaren zodat je nooit meer je favoriete recepten kwijt kan raken. Als je een recept wil toevoegen kan je dit intypen, of een foto maken van een recept uit je favoriete kookboek. Daarnaast kan je aan elk recept een foto toevoegen van het resultaat.* <br>
+<img src="doc/Schermafbeelding 2016-06-23 om 13.44.10.png" height="300"></img>
+<img src="doc/Schermafbeelding 2016-06-23 om 13.44.34.png" height="300"></img>
+<img src="doc/Schermafbeelding 2016-06-23 om 14.06.46.png" height="300"></img>
+<img src="doc/Schermafbeelding 2016-06-23 om 14.07.06.png" height="300"></img>
+<img src="doc/Screenshot_2016-06-23-13-36-53.png" height="300"></img>
+<img src="doc/Screenshot_2016-06-23-13-37-08.png" height="300"></img>
+<img src="doc/Screenshot_2016-06-23-13-37-15.png" height="300"></img>
+<img src="doc/Screenshot_2016-06-23-13-38-12.png" height="300"></img>
 
 ###Probleem
 Stel je wilt dat heerlijke recept bewaren dat alleen je moeder kan maken. Of dat familierecept dat van generatie op generatie wordt doorgegeven. Dat wil je goed bewaren. Je zou het natuurlijk kunnen opschrijven op papier en bewaren in een mapje. Maar papier verouderd, vlekken maken je tekst onleesbaar en in het ergste geval houd je het recept te dicht bij het vuur en zie je je familierecept letterlijk in vlammen opgaan. 
