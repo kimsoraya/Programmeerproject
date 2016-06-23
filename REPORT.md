@@ -5,7 +5,7 @@ In My Personal Cookbook kan de gebruiker zijn eigen persoonlijke kookboek samens
 
 ## Technisch Ontwerp
 In mijn MainActivity staan buttons die allebei naar een nieuw scherm leiden. De View Cookbook button leidt naar RecipeListActivity, waarin een ListView met alle recepten staat. 
-<img src="Programmeerproject/doc/My Personal Cookbook_v2.pdf"></img>
+<img src="doc/My Personal Cookbook_v2.pdf"></img>
 
 #### Recepten Toevoegen
 Als je op het plusje in de MainActivity klikt kom je in de TextOrPhotoActivity waarin je kan kiezen voor een Text Recipe of een Photo Recipe. Als je de "document" button klikt kom je in TextRecipeActivity en door op de "camera" button te klikken kom je in PhotoRecipeActivity. In TextRecipeActivity staan twee EditTexts, eentje voor de titel en de andere voor de tekst van het recept. Er is ook nog een button waarmee er een pop up menu wordt geopend. In dit menu kan je kiezen uit de optie om zelf een foto te nemen, of een afbeelding te kiezen uit de gallerij om aan het recept toe te voegen. Met de "save recipe" button wordt alle informatie uit de EditTexts, en de path naar de afbeelding, opgeslagen in de SQLite database door addRecipeInfo aan te roepen.   <br>
