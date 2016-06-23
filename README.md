@@ -25,4 +25,10 @@ Stel je wilt dat heerlijke recept bewaren dat alleen je moeder kan maken. Of dat
 - Screenshots maken van recepten online en deze als recept opslaan.
 - Bij elk recept kan je ook een foto toevoegen van je gerecht.
 
+###Bronnen
+- Camera button: http://www.pocketmeta.com/wp-content/uploads/2015/02/Do-Camera-Icon.png
+- Cookbook logo: https://img1.etsystatic.com/043/0/6923270/il_570xN.523364797_mf0v.jpg
+- Document button: http://www.lifeisajourney.org/wp-content/uploads/2013/10/Watch-N-Listen-Doc-Button-Icon.png
+- Plus button: http://media.pixcove.com/G/3/9/Plus-Desirable-Addition-Add-Free-Vector-Graphics-F-4445.jpg
+
 Copyright (C) Kim Soraya Schuiten - All Rights Reserved
