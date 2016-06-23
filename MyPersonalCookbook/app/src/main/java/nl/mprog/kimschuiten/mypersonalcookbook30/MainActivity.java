@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * onClickListener to show the menu options.
-    **/
+     */
     public void menuButtonClick(View view) {
         // Open new activity with all the recipe items
         Intent viewCategoryIntent = new Intent(this, RecipeListActivity.class);
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * onClickListener for add recipe button.
-    **/
+     */
     public void addButtonClick(View view) {
         // Open new activity in which you can choose text or photo recipe.
         Intent textPhotoIntent = new Intent(this, TextOrPhotoActivity.class);
