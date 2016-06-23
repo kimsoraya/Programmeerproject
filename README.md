@@ -13,7 +13,6 @@ Studentnummer: 10191089**
 <img src="doc/Schermafbeelding 2016-06-23 om 14.07.06.png" height="300"></img>
 <img src="doc/Screenshot_2016-06-23-13-36-53.png" height="300"></img>
 <img src="doc/Screenshot_2016-06-23-13-37-08.png" height="300"></img>
-<img src="doc/Screenshot_2016-06-23-13-37-15.png" height="300"></img>
 <img src="doc/Screenshot_2016-06-23-13-38-12.png" height="300"></img>
 
 ###Probleem
