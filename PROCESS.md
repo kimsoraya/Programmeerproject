@@ -71,10 +71,12 @@ Als je op de titel klikt in de titel listview wordt er een nieuwe activity geope
 - Deleten van recepten werkt, alleen wordt de listview dan niet meteen geupdate. Je moet eerst het scherm uit en dan weer in om te zien dat het gedelete is. 
 - Zelf genomen foto's worden nu ook opgehaald in de recipe listview. 
 - Als er een foto recept wordt opgehaald, wordt er ook echt een foto laten zien. 
+- 
+#dag 17
+- Debugging: De titel edit texts aangepast zodat er geen " en ' in de titel kan staan. Als deze tekens in de titel staan crasht de app namelijk als een van de sqlite querys wordt aangeroepen. Je kan met de camera nu ook een extra foto toevoegen aan foto recip
+- Scherm rotation uitgezet, omdat ik dat niet mooi vindt in mijn app. De listview wordt er lelijk door etcetera. 
+
 
 
 Wat staat er verder nog op mijn to do:
 - delete functie moet goed werken
-- ik krijg nog een "something went wrong" als ik een extra foto met de camera wil nemen in photo recipe
-- disable turn screen
-- zorgen dat de query's niet gebroken kunnen worden als de user rare tekens in de edittexts zet. 
