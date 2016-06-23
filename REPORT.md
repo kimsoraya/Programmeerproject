@@ -1,5 +1,7 @@
 #My Personal Cookbook Report
 
+<center><img src="doc/Schermafbeelding 2016-06-23 om 13.44.10.png"></img></center>
+
 ## Applicatie Beschrijving
 In My Personal Cookbook kan de gebruiker zijn eigen persoonlijke kookboek samenstellen aan de hand van zelfbedachte recepten en zijn of haar favoriete recepten uit kookboeken en het internet. Zo hoef je niet meer al je recepter te verzamelen in een papierenboekje, maar heb je alles handig op één plek.
 
