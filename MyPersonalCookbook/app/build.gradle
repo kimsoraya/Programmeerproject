@@ -10,7 +10,7 @@ android {
         preDexLibraries = false
     }
     defaultConfig {
-        applicationId "com.example.kimschuiten.mypersonalcookbook30"
+        applicationId "nl.mprog.kimschuiten.mypersonalcookbook30"
         minSdkVersion 17
         targetSdkVersion 23
         versionCode 1

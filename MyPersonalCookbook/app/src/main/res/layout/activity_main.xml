@@ -8,14 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#fddca6"
-    tools:context="com.example.kimschuiten.mypersonalcookbook30.MainActivity">
+    tools:context="nl.mprog.kimschuiten.mypersonalcookbook30.MainActivity">
 
-   <!-- <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/categoryTextView" />
--->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,16 +28,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp" />
 
-    <!--<TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/menuButton"
-        android:id="@+id/categoryTextView"
-        android:layout_centerHorizontal="true"
-        android:textSize="10pt"
-        android:text="Categories:"
-        android:textColor="#080808" />
--->
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -52,16 +36,4 @@
         android:onClick="addButtonClick"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"/>
-
-  <!--  <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/addRecipe"
-        android:id="@+id/addButton"
-        android:onClick="addButtonClick"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:background="#b34708"
-        android:textColor="#faf6f6"/>-->
 </RelativeLayout>

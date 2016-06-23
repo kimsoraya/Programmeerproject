@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kimschuiten.mypersonalcookbook30">
+    package="nl.mprog.kimschuiten.mypersonalcookbook30">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
@@ -13,18 +13,24 @@
         android:theme="@style/AppTheme"
         android:largeHeap="true"
         >
-        <activity android:name=".MainActivity">
+        <activity android:name="nl.mprog.kimschuiten.mypersonalcookbook30.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecipeListActivity" />
-        <activity android:name=".PhotoRecipeActivity" />
-        <activity android:name=".ShowRecipeActivity" />
-        <activity android:name=".TextOrPhotoActivity" />
-        <activity android:name=".TextRecipeActivity"></activity>
+        <activity android:name="nl.mprog.kimschuiten.mypersonalcookbook30.RecipeListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="nl.mprog.kimschuiten.mypersonalcookbook30.PhotoRecipeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="nl.mprog.kimschuiten.mypersonalcookbook30.ShowRecipeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="nl.mprog.kimschuiten.mypersonalcookbook30.TextOrPhotoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="nl.mprog.kimschuiten.mypersonalcookbook30.TextRecipeActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
